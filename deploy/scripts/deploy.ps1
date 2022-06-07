@@ -1245,7 +1245,7 @@ $eventgrid= "eventgrid"
     $form.ShowDialog() | Out-Null
     }
 
-Connect-AzAccount -Credential $cred | Out-Null
+#Connect-AzAccount -Credential $cred | Out-Null
 
 $connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $azureEventGridApiConnectionName
 
