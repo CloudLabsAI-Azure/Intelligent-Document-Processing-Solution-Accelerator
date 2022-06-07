@@ -1,3 +1,41 @@
+CD C:\LabFiles
+
+$credsfilepath = ".\AzureCreds.txt"
+
+$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
+
+$AzureUserName = "$($creds.AzureUserName)"
+
+$AzurePassword = "$($creds.AzurePassword)"
+
+$DeploymentID = "$($creds.DeploymentID)"
+
+$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
+
+$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
+
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
+
+$subscriptionId = $AzureSubscriptionID 
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+$resourceGroupName= "Intelligent"
+
+
+
+$loc= Get-AzResourceGroup -Name $resourceGroupName
+
+$location= $loc.location
+
+#Write-Host $location
+
+
+
+$uniqueName= "idp"+$DeploymentID
+
+CD C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\scripts
+
 ##################################################################
 #                                                                #
 #   Setup Script                                                 #
@@ -9,47 +47,21 @@
 #----------------------------------------------------------------#
 #   Parameters                                                   #
 #----------------------------------------------------------------#
-param (
-    [Parameter(Mandatory=$true)]
-    [string]$uniqueName = "default", 
-    [string]$subscriptionId = "default",
-    [string]$location = "default",
-	[string]$resourceGroupName = "default"
-)
+#param (
+ #   [Parameter(Mandatory=$true)]
+  #  [string]$uniqueName = "default", 
+   # [string]$subscriptionId = "default",
+    #[string]$location = "default",
+	#[string]$resourceGroupName = "default"
+#)
+
 $formsTraining = 'true'
 $customVisionTraining = 'true'
 $luisTraining = 'true'
 $cognitiveSearch = 'true'
 $deployWebUi = 'true'
 
-if($uniqueName -eq "default")
-{
-    Write-Error "Please specify a unique name."
-    break;
-}
 
-if($uniqueName.Length -gt 17)
-{
-    Write-Error "The unique name is too long. Please specify a name with less than 17 characters."
-}
-
-if($uniqueName -Match "-")
-{
-	Write-Error "The unique name should not contain special characters"
-}
-
-if($location -eq "default")
-{
-	while ($TRUE) {
-		try {
-			$location = Read-Host -Prompt "Input Location(westus, eastus, centralus, southcentralus): "
-			break  
-		}
-		catch {
-				Write-Error "Please specify a resource group name."
-		}
-	}
-}
 
 Function Pause ($Message = "Press any key to continue...") {
    # Check if running in PowerShell ISE
@@ -100,11 +112,9 @@ $uniqueName = $uniqueName.ToLower();
 # prefixes
 $prefix = $uniqueName
 
-if ( $resourceGroupName -eq 'default' ) {
-	$resourceGroupName = $prefix
-}
 
-#$ScriptRoot = "C:\Projects\Repos\msrpa\deploy\scripts"
+
+$ScriptRoot = "C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy"
 $outArray = New-Object System.Collections.ArrayList($null)
 
 if ($ScriptRoot -eq "" -or $null -eq $ScriptRoot ) {
@@ -123,20 +133,6 @@ $ErrorActionPreference = "Stop"
 
 # Sign In
 Write-Host Logging in... -ForegroundColor Green
-Connect-AzAccount
-
-if($subscriptionId -eq "default"){
-	# Set Subscription Id
-	while ($TRUE) {
-		try {
-			$subscriptionId = Read-Host -Prompt "Input subscription Id"
-			break  
-		}
-		catch {
-			Write-Host Invalid subscription Id. -ForegroundColor Green `n
-		}
-	}
-}
 
 $outArray.Add("v_subscriptionId=$subscriptionId")
 $context = Get-AzSubscription -SubscriptionId $subscriptionId
@@ -158,37 +154,9 @@ $id = $subscriptionId.Substring($index, $index + 5)
 #   Step 1 - Register Resource Providers and Resource Group		 #
 #----------------------------------------------------------------#
 
-$resourceProviders = @(
-    "microsoft.documentdb",
-    "microsoft.insights",
-    "microsoft.search",
-    "microsoft.sql",
-    "microsoft.storage",
-    "microsoft.logic",
-    "microsoft.web",
-	"microsoft.eventgrid"
-)
-	
-Write-Host Registering resource providers: -ForegroundColor Green`n 
-foreach ($resourceProvider in $resourceProviders) {
-    Write-Host - Registering $resourceProvider -ForegroundColor Green
-	Register-AzResourceProvider `
-            -ProviderNamespace $resourceProvider
-}
 
-# Create Resource Group 
-Write-Host `nCreating Resource Group $resourceGroupName"..." -ForegroundColor Green `n
-try {
-		Get-AzResourceGroup `
-			-Name $resourceGroupName `
-			-Location $location `
-	}
-catch {
-		New-AzResourceGroup `
-			-Name $resourceGroupName `
-			-Location $location `
-			-Force
-	}
+
+
 
 #----------------------------------------------------------------#
 #   Step 2 - Storage Account & Containers						 #
@@ -492,6 +460,7 @@ catch
 $appInsightInstrumentationKey = (Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName).InstrumentationKey
 $outArray.Add("v_appInsightInstrumentationKey=$appInsightInstrumentationKey")
 
+Start-Sleep -s 20
 
 #$funcStorageAccountName = $prefix + $id + "funcstor";
 $funcStorageAccountName = $prefix + "funcsa";
@@ -519,7 +488,7 @@ $funcStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGr
 $funcStorageAccountConnectionString = 'DefaultEndpointsProtocol=https;AccountName=' + $funcStorageAccountName + ';AccountKey=' + $funcStorageAccountKey + ';EndpointSuffix=core.windows.net' 
 $outArray.Add("v_funcStorageAccountKey=$funcStorageAccountKey")
 $outArray.Add("v_funcStorageAccountConnectionString=$funcStorageAccountConnectionString")
-
+Start-Sleep -s 20
 #----------------------------------------------------------------#
 #   Step 7 - CosmosDb account, database and container			 #
 #----------------------------------------------------------------#
@@ -662,11 +631,11 @@ $outArray.Add("v_functionAppfr=$functionAppfr")
 $outArray.Add("v_functionAppcdb=$functionAppcdb")
 $outArray.Add("v_functionAppluis=$functionAppluis")
 
-$filePathpdf = "$ScriptRoot\..\functions\msrpapdf.zip"
-$filePathbo = "$ScriptRoot\..\functions\msrpabo.zip"
-$filePathcdb = "$ScriptRoot\..\functions\msrpacdbskill.zip"
-$filePathfr = "$ScriptRoot\..\functions\mrrpafrskill.zip"
-$filePathluis = "$ScriptRoot\..\functions\msrpaluisskill.zip"
+$filePathpdf = "$ScriptRoot\functions\msrpapdf.zip"
+$filePathbo = "$ScriptRoot\functions\msrpabo.zip"
+$filePathcdb = "$ScriptRoot\functions\msrpacdbskill.zip"
+$filePathfr = "$ScriptRoot\functions\mrrpafrskill.zip"
+$filePathluis = "$ScriptRoot\functions\msrpaluisskill.zip"
 
 $outArray.Add("v_filePathpdf=$filePathpdf")
 $outArray.Add("v_filePathbo=$filePathbo")
@@ -790,7 +759,7 @@ $functionKeys
 if ($formsTraining -eq 'true')
 {
 	# We currently have two level of "Folders" that we process
-	$trainingFormFilePath = "$ScriptRoot\..\formstrain\"
+	$trainingFormFilePath = "$ScriptRoot\formstrain\"
 	$outArray.Add("v_trainingFormFilePath=$trainingFormFilePath")
 
 	$trainingFormContainers = New-Object System.Collections.ArrayList($null)
@@ -800,7 +769,10 @@ if ($formsTraining -eq 'true')
 	$outArray.Add("v_trainingStorageAccountName=$trainingStorageAccountName")
 
 	$folders = Get-ChildItem $trainingFormFilePath
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\formstrain
 	foreach ($folder in $folders) {
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\formstrain
+
 		$subFolders = Get-ChildItem $folder
 		foreach ($subFolder in $subFolders) {
 			$formContainerName = $folder.Name.toLower() + $subFolder.Name.toLower()
@@ -833,7 +805,12 @@ if ($formsTraining -eq 'true')
 					-Permission container
 			}
 			$trainingFormContainers.Add($formContainerName)
+
+            $fpath='C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\formstrain\' + $folder.Name 
+            cd $fpath
+
 			$files = Get-ChildItem $subFolder
+
 			foreach($file in $files){
 				$filePath = $trainingFormFilePath + $folder.Name + '\' + $subFolder.Name + '\' + $file.Name
 				Write-Host Upload File $filePath -ForegroundColor Green
@@ -843,9 +820,11 @@ if ($formsTraining -eq 'true')
 					-Blob $file.Name `
 					-Context $frStorageContext `
 					-Force
+       
 				
 			}
 		}
+ $folder= $null
 	}
 	$trainingFormContainers
 }
@@ -877,13 +856,11 @@ if ($formsTraining -eq 'true')
 			{
 				try
 				{
-                    Write-Host Invoking API.... -ForegroundColor Green
 					$response = Invoke-RestMethod -Method Post -Uri $formRecognizerTrainUrl -ContentType "application/json" -Headers $formRecognizeHeader -Body $body
 					$valid = $true
 				}
 				catch
 				{
-                    Write-Host Error Occurred... -ForegroundColor Red
 					$valid = $false
 					Start-Sleep -s 30
 				}
@@ -913,10 +890,12 @@ if ($luisTraining -eq 'true')
 	$luisModels = @{ }
 	$luisModels.Clear()
 
-	$trainingLuisFilePath = "$ScriptRoot\..\luistrain\"
+	$trainingLuisFilePath = "$ScriptRoot\luistrain\"
 
 	$folders = Get-ChildItem $trainingLuisFilePath
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\luistrain
 	foreach ($folder in $folders) {
+        cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\luistrain
 		$luisApplicationName = $folder.Name.toLower()
 		Write-Host Creating luis application... -ForegroundColor Green
 		#$luisAppBody = "{`"name`": `"$($luisApplicationName)`",`"culture`":`"en-us`"}"
@@ -1012,11 +991,13 @@ if ($customVisionTraining -eq 'true')
 	$customVisionYesTagId = $YesTagResponse.id
 	$outArray.Add("v_customVisionYesTagId = $customVisionYesTagId")
 
-	$custVisionTrainFilePath = "$ScriptRoot\..\custvisiontrain\"
+	$custVisionTrainFilePath = "$ScriptRoot\custvisiontrain\"
 
 	# Create Custom Vision Tags
 	$cvFolders = Get-ChildItem $custVisionTrainFilePath
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\custvisiontrain
 	foreach ($folder in $cvFolders) {
+        cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\custvisiontrain
 		$tagName = $folder.Name.toLower()
 		
 		# Create Containers
@@ -1046,10 +1027,15 @@ if ($customVisionTraining -eq 'true')
 		$customVisionTagId = $tagResponse.id
 		$outArray.Add("v_customVisionTagId = $customVisionTagId")
 
+
+
 		$cvSubFolders = Get-ChildItem $folder
 		foreach ($subFolder in $cvSubFolders) {
+            $fpath='C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\custvisiontrain\' + $folder.Name 
+            cd $fpath
 			$files = Get-ChildItem $subFolder
 			foreach($file in $files){
+
 				$filePath = $custVisionTrainFilePath + $folder.Name + '\' + $subFolder.Name + '\' + $file.Name
 				Write-Host Upload File $filePath -ForegroundColor Green
 				
@@ -1109,6 +1095,7 @@ if ($customVisionTraining -eq 'true')
 				$imageTagUri = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/images/tags"
 				$imageTagResponse = Invoke-RestMethod -Method POST -Uri $imageTagUri -ContentType "application/json" -Headers $customVisionHeader -Body $imageJsonBody
 				$imageTagResponse
+				Start-Sleep -s 1
 			}
 		}
 	}
@@ -1183,8 +1170,8 @@ else
 $azureBlobApiConnectionName = $prefix + "blobapi"
 $outArray.Add("v_azureBlobApiConnectionName = $azureBlobApiConnectionName")
 
-$azureblobTemplateFilePath = "$ScriptRoot\..\templates\azureblob-template.json"
-$azureblobParametersFilePath = "$ScriptRoot\..\templates\azureblob-parameters.json"
+$azureblobTemplateFilePath = "$ScriptRoot\templates\azureblob-template.json"
+$azureblobParametersFilePath = "$ScriptRoot\templates\azureblob-parameters.json"
 $azureblobParametersTemplate = Get-Content $azureblobParametersFilePath | ConvertFrom-Json
 $azureblobParameters = $azureblobParametersTemplate.parameters
 $azureblobParameters.subscription_id.value = $subscriptionId
@@ -1205,8 +1192,8 @@ Write-Host Deploy azureeventgrid API connection -ForegroundColor Green
 $azureEventGridApiConnectionName = $prefix + "aegapi"
 $outArray.Add("v_azureEventGridApiConnectionName = $azureEventGridApiConnectionName")
 
-$azureEventGridTemplateFilePath = "$ScriptRoot\..\templates\azureeventgrid-template.json"
-$azureEventGridParametersFilePath = "$ScriptRoot\..\templates\azureeventgrid-parameters.json"
+$azureEventGridTemplateFilePath = "$ScriptRoot\templates\azureeventgrid-template.json"
+$azureEventGridParametersFilePath = "$ScriptRoot\templates\azureeventgrid-parameters.json"
 $outArray.Add("v_azureEventGridTemplateFilePath = $azureEventGridTemplateFilePath")
 $outArray.Add("v_azureEventGridParametersFilePath = $azureEventGridParametersFilePath")
 
@@ -1224,15 +1211,94 @@ New-AzResourceGroupDeployment `
 		-TemplateFile $azureEventGridTemplateFilePath `
 		-TemplateParameterFile $azureEventGridParametersFilePath
 
-$pauseMessage = 'Go to Azure resource group ' + $resourceGroupName + 'and authorize eventgrid connection, save and continue here'
-Pause $pauseMessage
+####################################
+$eventgrid= "eventgrid"
+#Param(
+ #   [string] $ResourceGroupName = $resourceGroupName,
+  #  [string] $ResourceLocation = $location,
+   # [string] $api = $eventgrid,
+   # [string] $ConnectionName = $azureEventGridApiConnectionName,
+   # [string] $subscriptionId = $AzureSubscriptionID,
+   # [bool] $createConnection =  $true
+#)
+
+    #$ResourceGroupName = $resourceGroupName, 
+    #$ResourceLocation = $location,
+    #$api = $eventgrid,
+    #$ConnectionName = $azureEventGridApiConnectionName,
+    #$subscriptionId = $AzureSubscriptionID,
+    #$createConnection =  $true
+#region mini window, made by Scripting Guy Blog
+    Function Show-OAuthWindow {
+    Add-Type -AssemblyName System.Windows.Forms
+ 
+    $form = New-Object -TypeName System.Windows.Forms.Form -Property @{Width=600;Height=800}
+    $web  = New-Object -TypeName System.Windows.Forms.WebBrowser -Property @{Width=580;Height=780;Url=($url -f ($Scope -join "%20")) }
+    $DocComp  = {
+            $Global:uri = $web.Url.AbsoluteUri
+            if ($Global:Uri -match "error=[^&]*|code=[^&]*") {$form.Close() }
+    }
+    $web.ScriptErrorsSuppressed = $true
+    $web.Add_DocumentCompleted($DocComp)
+    $form.Controls.Add($web)
+    $form.Add_Shown({$form.Activate()})
+    $form.ShowDialog() | Out-Null
+    }
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $azureEventGridApiConnectionName
+
+Write-Host "connection status: " $connection.Properties.Statuses[0]
+
+$parameters = @{
+	"parameters" = ,@{
+	"parameterName"= "token";
+	"redirectUrl"= "https://ema1.exp.azure.com/ema/default/authredirect"
+	}
+}
+
+############################
+
+#get the links needed for consent
+$consentResponse = Invoke-AzResourceAction -Action "listConsentLinks" -ResourceId $connection.ResourceId -Parameters $parameters -Force
+
+$url = $consentResponse.Value.Link 
+
+#prompt user to login and grab the code after auth
+Show-OAuthWindow -URL $url -Credential $cred | Out-Null
+
+$regex = '(code=)(.*)$'
+    $code  = ($uri | Select-string -pattern $regex).Matches[0].Groups[2].Value
+    Write-output "Received an accessCode: $code"
+
+if (-Not [string]::IsNullOrEmpty($code)) {
+	$parameters = @{ }
+	$parameters.Add("code", $code)
+	# NOTE: errors ignored as this appears to error due to a null response
+
+    #confirm the consent code
+	Invoke-AzResourceAction -Action "confirmConsentCode" -ResourceId $connection.ResourceId -Parameters $parameters -Force -ErrorAction Ignore
+}
+
+#retrieve the connection
+$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $azureEventGridApiConnectionName
+Write-Host "connection status now: " $connection.Properties.Statuses[0]
+
+####################################
+
+#Pause 
+#Write-Host Please go to "Intelligent" Resource Group and authorize EventGrid API connection $office365ApiConnectionName within 2 minutes -ForegroundColor Green
+Start-Sleep -s 20
+
+
 
 # logic app
 $logicAppPdfName = $prefix + "processpdfeg"
 $outArray.Add("v_logicAppPdfName = $logicAppPdfName")
 
-$logicAppPdfTemplateFilePath = "$ScriptRoot\..\templates\msrpaprocesspdfeg-template.json"
-$logicAppPdfParametersFilePath = "$ScriptRoot\..\templates\msrpaprocesspdfeg-parameters.json"
+$logicAppPdfTemplateFilePath = "$ScriptRoot\templates\msrpaprocesspdfeg-template.json"
+$logicAppPdfParametersFilePath = "$ScriptRoot\templates\msrpaprocesspdfeg-parameters.json"
 $outArray.Add("v_logicAppPdfTemplateFilePath = $logicAppPdfTemplateFilePath")
 $outArray.Add("v_logicAppPdfParametersFilePath = $logicAppPdfParametersFilePath")
 
@@ -1284,8 +1350,8 @@ Write-Host Deploy office365 API connection -ForegroundColor Green
 $office365ApiConnectionName = $prefix + "o365api"
 $outArray.Add("v_office365ApiConnectionName = $office365ApiConnectionName")
 
-$office365TemplateFilePath = "$ScriptRoot\..\templates\office365-template.json"
-$office365ParametersFilePath = "$ScriptRoot\..\templates\office365-parameters.json"
+$office365TemplateFilePath = "$ScriptRoot\templates\office365-template.json"
+$office365ParametersFilePath = "$ScriptRoot\templates\office365-parameters.json"
 $outArray.Add("v_office365TemplateFilePath = $office365TemplateFilePath")
 $outArray.Add("v_office365ParametersFilePath = $office365ParametersFilePath")
 
@@ -1303,15 +1369,95 @@ New-AzResourceGroupDeployment `
 		-TemplateFile $office365TemplateFilePath `
 		-TemplateParameterFile $office365ParametersFilePath
 
-$pauseMessage = 'Go to Azure resource group ' + $resourceGroupName + 'and authorize office365 connection, save and continue here'
-Pause $pauseMessage
+####################################
+
+$office365= "office365"
+#Param(
+ #   [string] $ResourceGroupName = $resourceGroupName,
+  #  [string] $ResourceLocation = $location,
+   # [string] $api = $office365,
+    #[string] $ConnectionName = $office365ApiConnectionName,
+    #[string] $subscriptionId = $AzureSubscriptionID,
+    #[bool] $createConnection =  $True
+#)
+
+    #$ResourceGroupName = $resourceGroupName,
+    #$ResourceLocation = $location,
+    #$api = $office365,
+    #$ConnectionName = $office365ApiConnectionName,
+    #$subscriptionId = $AzureSubscriptionID,
+    #$createConnection =  $true
+
+#region mini window, made by Scripting Guy Blog
+    Function Show-OAuthWindow {
+    Add-Type -AssemblyName System.Windows.Forms
+ 
+    $form = New-Object -TypeName System.Windows.Forms.Form -Property @{Width=600;Height=800}
+    $web  = New-Object -TypeName System.Windows.Forms.WebBrowser -Property @{Width=580;Height=780;Url=($url -f ($Scope -join "%20")) }
+    $DocComp  = {
+            $Global:uri = $web.Url.AbsoluteUri
+            if ($Global:Uri -match "error=[^&]*|code=[^&]*") {$form.Close() }
+    }
+    $web.ScriptErrorsSuppressed = $true
+    $web.Add_DocumentCompleted($DocComp)
+    $form.Controls.Add($web)
+    $form.Add_Shown({$form.Activate()})
+    $form.ShowDialog() | Out-Null
+    }
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+
+#else (meaning the conneciton was created via a deployment) - get the connection
+
+$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $office365ApiConnectionName
+
+Write-Host "connection status: " $connection.Properties.Statuses[0]
+
+$parameters = @{
+	"parameters" = ,@{
+	"parameterName"= "token";
+	"redirectUrl"= "https://ema1.exp.azure.com/ema/default/authredirect"
+	}
+}
+
+#get the links needed for consent
+$consentResponse = Invoke-AzResourceAction -Action "listConsentLinks" -ResourceId $connection.ResourceId -Parameters $parameters -Force
+
+$url = $consentResponse.Value.Link 
+
+#prompt user to login and grab the code after auth
+Show-OAuthWindow -URL $url -Credential $cred | Out-Null
+
+$regex = '(code=)(.*)$'
+    $code  = ($uri | Select-string -pattern $regex).Matches[0].Groups[2].Value
+    Write-output "Received an accessCode: $code"
+
+if (-Not [string]::IsNullOrEmpty($code)) {
+	$parameters = @{ }
+	$parameters.Add("code", $code)
+	# NOTE: errors ignored as this appears to error due to a null response
+
+    #confirm the consent code
+	Invoke-AzResourceAction -Action "confirmConsentCode" -ResourceId $connection.ResourceId -Parameters $parameters -Force -ErrorAction Ignore
+}
+
+#retrieve the connection
+$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $office365ApiConnectionName
+Write-Host "connection status now: " $connection.Properties.Statuses[0]
+
+####################################
+
+#Pause 
+#Write-Host Please go to "Intelligent" Resource Group and authorize office365 API connection $office365ApiConnectionName within 2 minutes -ForegroundColor Green
+Start-Sleep -s 20
 
 Write-Host Deploy Logic app to process emails -ForegroundColor Green
 $logicAppEmailName = $prefix + "processemail"
 $outArray.Add("v_logicAppEmailName = $logicAppEmailName")
 
-$logicAppEmailTemplateFilePath = "$ScriptRoot\..\templates\msrpaprocessemail-template.json"
-$logicAppEmailParametersFilePath = "$ScriptRoot\..\templates\msrpaprocessemail-parameters.json"
+$logicAppEmailTemplateFilePath = "$ScriptRoot\templates\msrpaprocessemail-template.json"
+$logicAppEmailParametersFilePath = "$ScriptRoot\templates\msrpaprocessemail-parameters.json"
 $outArray.Add("v_logicAppEmailTemplateFilePath = $logicAppEmailTemplateFilePath")
 $outArray.Add("v_logicAppEmailParametersFilePath = $logicAppEmailParametersFilePath")
 
@@ -1389,7 +1535,7 @@ if ( $formsTraining -eq 'true' )
 			Add-AzTableRow `
 			-table $cloudTable `
 			-partitionKey $formTagName  `
-			-rowKey ("0") -property @{"ComputerVisionKey"=$cognitiveServicesSubscriptionKey;"ComputerVisionUri"=$cognitiveServicesEndpoint + "vision/v2.0/read/core/asyncBatchAnalyze";"EndIndex"=4000;"EndPoint"=$formRecognizerEndpoint + "formrecognizer/v1.0-preview/custom/models/ModelId/analyze";"ImageContainerName"=$formTagName;
+			-rowKey ("0") -property @{"ComputerVisionKey"=$cognitiveServicesSubscriptionKey;"ComputerVisionUri"=$cognitiveServicesEndpoint + "vision/v2.0/read/core/asyncBatchAnalyze";"EndIndex"=4000;"EndPoint"=$formRecognizerEndpoint + "formrecognizer/v2.1/custom/models/ModelId/analyze";"ImageContainerName"=$formTagName;
 			"IsActive"=$true;"ModelId"=$formRecognizerModels[$formTagName + 'page1'];"ModelName"="Form";"Page"="1";"StartIndex"=0;"SubscriptionKey"=$formRecognizerSubscriptionKey}
 		}
 		catch
@@ -1400,12 +1546,15 @@ if ( $formsTraining -eq 'true' )
 
 if ( $luisTraining -eq 'true' )
 {
+    $trainingLuisFilePath = "$ScriptRoot\luistrain\"
 	$folders = Get-ChildItem $trainingLuisFilePath
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\luistrain
 	foreach ($folder in $folders) {
 		$formTagName = $folder.Name.toLower()
 
 		$files = Get-ChildItem $folder
 		foreach($file in $files){
+            cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\luistrain
 			$luisApplicationFilePath = $trainingLuisFilePath + $folder.Name + '\' + $file.Name
 			$luisApplicationTemplate = Get-Content $luisApplicationFilePath
 			try
@@ -2173,11 +2322,13 @@ if ( $cognitiveSearch -eq 'true' )
 #   Step 16 - Upload sample documents for E2E testing			 #
 #----------------------------------------------------------------#
 Write-Host Upload sample data and trigger Logic app -ForegroundColor Green
-$solTestFormFilePath = "$ScriptRoot\..\e2etest\"
+$solTestFormFilePath = "$ScriptRoot\e2etest\"
 $outArray.Add("v_solTestFormFilePath = $solTestFormFilePath")
 
 $solTestFolders = Get-ChildItem $solTestFormFilePath
+cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\e2etest
 foreach ($solTestFolder in $solTestFolders) {
+    cd C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\e2etest
 	$formContainerName = 'formspdf'
 	$storageAccount = Get-AzStorageAccount `
 		-ResourceGroupName $resourceGroupName `
@@ -2253,7 +2404,7 @@ if ( $deployWebUi -eq 'true')
 			-ResourceGroupName $resourceGroupName `
 			-AppSettings $webApiApplicationSettings `
 
-	$filePathsearchApiUi = "$ScriptRoot\..\apps\msrpawebapi.zip"
+	$filePathsearchApiUi = "$ScriptRoot\apps\msrpawebapi.zip"
 	$outArray.Add("v_filePathsearchApiUi = $filePathsearchApiUi")
 
 	Write-Host Publishing $searchUiWebApiName"..." -ForegroundColor Green
@@ -2304,7 +2455,7 @@ if ( $deployWebUi -eq 'true')
 			-ResourceGroupName $resourceGroupName `
 			-AppSettings $webAppApplicationSettings `
 
-	$filePathsearchAppUi = "$ScriptRoot\..\apps\msrpaweb.zip"
+	$filePathsearchAppUi = "$ScriptRoot\apps\msrpaweb.zip"
 	$outArray.Add("v_filePathsearchAppUi = $filePathsearchAppUi")
 
 	Write-Host Publishing $searchUiWebAppName"..." -ForegroundColor Green
