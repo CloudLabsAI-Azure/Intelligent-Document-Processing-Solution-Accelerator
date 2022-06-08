@@ -1,41 +1,3 @@
-CD C:\LabFiles
-
-$credsfilepath = ".\AzureCreds.txt"
-
-$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
-
-$AzureUserName = "$($creds.AzureUserName)"
-
-$AzurePassword = "$($creds.AzurePassword)"
-
-$DeploymentID = "$($creds.DeploymentID)"
-
-$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
-
-$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
-
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
-
-$subscriptionId = $AzureSubscriptionID 
-
-Connect-AzAccount -Credential $cred | Out-Null
-
-$resourceGroupName= "Intelligent"
-
-
-
-$loc= Get-AzResourceGroup -Name $resourceGroupName
-
-$location= $loc.location
-
-#Write-Host $location
-
-
-
-$uniqueName= "idp"+$DeploymentID
-
-CD C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\scripts
-
 ##################################################################
 #                                                                #
 #   Setup Script                                                 #
@@ -47,13 +9,13 @@ CD C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\scripts
 #----------------------------------------------------------------#
 #   Parameters                                                   #
 #----------------------------------------------------------------#
-#param (
- #   [Parameter(Mandatory=$true)]
-  #  [string]$uniqueName = "default", 
-   # [string]$subscriptionId = "default",
-    #[string]$location = "default",
-	#[string]$resourceGroupName = "default"
-#)
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$uniqueName = "default", 
+    [string]$subscriptionId = "default",
+    [string]$location = "default",
+	[string]$resourceGroupName = "default"
+)
 
 $formsTraining = 'true'
 $customVisionTraining = 'true'
@@ -442,20 +404,26 @@ $appInsightName = $prefix + "ai"
 $outArray.Add("v_appInsightName=$appInsightName")
 
 Write-Host Creating application insight account... -ForegroundColor Green
-try
-{
-	Get-AzApplicationInsights `
-	-ResourceGroupName $resourceGroupName `
-	-Name $appInsightName
-}
-catch
-{
-	New-AzApplicationInsights `
+
+ $ExistingappInsightName=$appInsightName
+ $AppInsights = Get-AzApplicationInsights –ResourceGroupName $resourceGroupName
+ $ApplicationInsightsName=$AppInsights.Name
+
+
+ if($ApplicationInsightsName -ne $ExistingappInsightName)
+        {
+    New-AzApplicationInsights `
 	-ResourceGroupName $resourceGroupName `
 	-Name $appInsightName `
 	-Location $location `
 	-Kind web
+        }
+else
+{
+    Write-Host Resource Already Exist -ForegroundColor Green
 }
+
+
 
 $appInsightInstrumentationKey = (Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName).InstrumentationKey
 $outArray.Add("v_appInsightInstrumentationKey=$appInsightInstrumentationKey")
@@ -1211,85 +1179,15 @@ New-AzResourceGroupDeployment `
 		-TemplateFile $azureEventGridTemplateFilePath `
 		-TemplateParameterFile $azureEventGridParametersFilePath
 
-####################################
-$eventgrid= "eventgrid"
-#Param(
- #   [string] $ResourceGroupName = $resourceGroupName,
-  #  [string] $ResourceLocation = $location,
-   # [string] $api = $eventgrid,
-   # [string] $ConnectionName = $azureEventGridApiConnectionName,
-   # [string] $subscriptionId = $AzureSubscriptionID,
-   # [bool] $createConnection =  $true
-#)
 
-    #$ResourceGroupName = $resourceGroupName, 
-    #$ResourceLocation = $location,
-    #$api = $eventgrid,
-    #$ConnectionName = $azureEventGridApiConnectionName,
-    #$subscriptionId = $AzureSubscriptionID,
-    #$createConnection =  $true
-#region mini window, made by Scripting Guy Blog
-    Function Show-OAuthWindow {
-    Add-Type -AssemblyName System.Windows.Forms
- 
-    $form = New-Object -TypeName System.Windows.Forms.Form -Property @{Width=600;Height=800}
-    $web  = New-Object -TypeName System.Windows.Forms.WebBrowser -Property @{Width=580;Height=780;Url=($url -f ($Scope -join "%20")) }
-    $DocComp  = {
-            $Global:uri = $web.Url.AbsoluteUri
-            if ($Global:Uri -match "error=[^&]*|code=[^&]*") {$form.Close() }
-    }
-    $web.ScriptErrorsSuppressed = $true
-    $web.Add_DocumentCompleted($DocComp)
-    $form.Controls.Add($web)
-    $form.Add_Shown({$form.Activate()})
-    $form.ShowDialog() | Out-Null
-    }
-
-#Connect-AzAccount -Credential $cred | Out-Null
-
-$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $azureEventGridApiConnectionName
-
-Write-Host "connection status: " $connection.Properties.Statuses[0]
-
-$parameters = @{
-	"parameters" = ,@{
-	"parameterName"= "token";
-	"redirectUrl"= "https://ema1.exp.azure.com/ema/default/authredirect"
-	}
-}
-
-############################
-
-#get the links needed for consent
-$consentResponse = Invoke-AzResourceAction -Action "listConsentLinks" -ResourceId $connection.ResourceId -Parameters $parameters -Force
-
-$url = $consentResponse.Value.Link 
-
-#prompt user to login and grab the code after auth
-Show-OAuthWindow -URL $url -Credential $cred | Out-Null
-
-$regex = '(code=)(.*)$'
-    $code  = ($uri | Select-string -pattern $regex).Matches[0].Groups[2].Value
-    Write-output "Received an accessCode: $code"
-
-if (-Not [string]::IsNullOrEmpty($code)) {
-	$parameters = @{ }
-	$parameters.Add("code", $code)
-	# NOTE: errors ignored as this appears to error due to a null response
-
-    #confirm the consent code
-	Invoke-AzResourceAction -Action "confirmConsentCode" -ResourceId $connection.ResourceId -Parameters $parameters -Force -ErrorAction Ignore
-}
-
-#retrieve the connection
-$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $azureEventGridApiConnectionName
-Write-Host "connection status now: " $connection.Properties.Statuses[0]
-
-####################################
-
-#Pause 
-#Write-Host Please go to "Intelligent" Resource Group and authorize EventGrid API connection $office365ApiConnectionName within 2 minutes -ForegroundColor Green
-Start-Sleep -s 20
+Pause 
+Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $azureEventGridApiConnectionName - within 2 minutes -ForegroundColor Green
+$time=120
+do{
+Write-Host Remaining time for authorizing $azureEventGridApiConnectionName API connection : $time seconds -ForegroundColor Red
+Sleep 1
+$time--
+} while($time -gt 0)
 
 
 
@@ -1369,88 +1267,17 @@ New-AzResourceGroupDeployment `
 		-TemplateFile $office365TemplateFilePath `
 		-TemplateParameterFile $office365ParametersFilePath
 
-####################################
-
-$office365= "office365"
-#Param(
- #   [string] $ResourceGroupName = $resourceGroupName,
-  #  [string] $ResourceLocation = $location,
-   # [string] $api = $office365,
-    #[string] $ConnectionName = $office365ApiConnectionName,
-    #[string] $subscriptionId = $AzureSubscriptionID,
-    #[bool] $createConnection =  $True
-#)
-
-    #$ResourceGroupName = $resourceGroupName,
-    #$ResourceLocation = $location,
-    #$api = $office365,
-    #$ConnectionName = $office365ApiConnectionName,
-    #$subscriptionId = $AzureSubscriptionID,
-    #$createConnection =  $true
-
-#region mini window, made by Scripting Guy Blog
-    Function Show-OAuthWindow {
-    Add-Type -AssemblyName System.Windows.Forms
- 
-    $form = New-Object -TypeName System.Windows.Forms.Form -Property @{Width=600;Height=800}
-    $web  = New-Object -TypeName System.Windows.Forms.WebBrowser -Property @{Width=580;Height=780;Url=($url -f ($Scope -join "%20")) }
-    $DocComp  = {
-            $Global:uri = $web.Url.AbsoluteUri
-            if ($Global:Uri -match "error=[^&]*|code=[^&]*") {$form.Close() }
-    }
-    $web.ScriptErrorsSuppressed = $true
-    $web.Add_DocumentCompleted($DocComp)
-    $form.Controls.Add($web)
-    $form.Add_Shown({$form.Activate()})
-    $form.ShowDialog() | Out-Null
-    }
-
-Connect-AzAccount -Credential $cred | Out-Null
 
 
-#else (meaning the conneciton was created via a deployment) - get the connection
+Pause 
 
-$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $office365ApiConnectionName
-
-Write-Host "connection status: " $connection.Properties.Statuses[0]
-
-$parameters = @{
-	"parameters" = ,@{
-	"parameterName"= "token";
-	"redirectUrl"= "https://ema1.exp.azure.com/ema/default/authredirect"
-	}
-}
-
-#get the links needed for consent
-$consentResponse = Invoke-AzResourceAction -Action "listConsentLinks" -ResourceId $connection.ResourceId -Parameters $parameters -Force
-
-$url = $consentResponse.Value.Link 
-
-#prompt user to login and grab the code after auth
-Show-OAuthWindow -URL $url -Credential $cred | Out-Null
-
-$regex = '(code=)(.*)$'
-    $code  = ($uri | Select-string -pattern $regex).Matches[0].Groups[2].Value
-    Write-output "Received an accessCode: $code"
-
-if (-Not [string]::IsNullOrEmpty($code)) {
-	$parameters = @{ }
-	$parameters.Add("code", $code)
-	# NOTE: errors ignored as this appears to error due to a null response
-
-    #confirm the consent code
-	Invoke-AzResourceAction -Action "confirmConsentCode" -ResourceId $connection.ResourceId -Parameters $parameters -Force -ErrorAction Ignore
-}
-
-#retrieve the connection
-$connection = Get-AzResource -ResourceType "Microsoft.Web/connections" -ResourceGroupName $resourceGroupName -ResourceName $office365ApiConnectionName
-Write-Host "connection status now: " $connection.Properties.Statuses[0]
-
-####################################
-
-#Pause 
-#Write-Host Please go to "Intelligent" Resource Group and authorize office365 API connection $office365ApiConnectionName within 2 minutes -ForegroundColor Green
-Start-Sleep -s 20
+Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $azureEventGridApiConnectionName - within 2 minutes -ForegroundColor Green
+$time=120
+do{
+Write-Host Remaining time for authorizing $azureEventGridApiConnectionName API connection : $time seconds -ForegroundColor Red
+Sleep 1
+$time--
+} while($time -gt 0)
 
 Write-Host Deploy Logic app to process emails -ForegroundColor Green
 $logicAppEmailName = $prefix + "processemail"
