@@ -1,4 +1,40 @@
+CD C:\LabFiles
 
+$credsfilepath = ".\AzureCreds.txt"
+
+$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
+
+$AzureUserName = "$($creds.AzureUserName)"
+
+$AzurePassword = "$($creds.AzurePassword)"
+
+$DeploymentID = "$($creds.DeploymentID)"
+
+$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
+
+$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
+
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
+
+$subscriptionId = $AzureSubscriptionID 
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+$resourceGroupName= "Intelligent"
+
+
+
+$loc= Get-AzResourceGroup -Name $resourceGroupName
+
+$location= $loc.location
+
+#Write-Host $location
+
+
+
+$uniqueName= "idp"+$DeploymentID
+
+CD C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\scripts
 
 ##################################################################
 #                                                                #
@@ -11,13 +47,13 @@
 #----------------------------------------------------------------#
 #   Parameters                                                   #
 #----------------------------------------------------------------#
-param (
-    [Parameter(Mandatory=$true)]
-    [string]$uniqueName = "default", 
-    [string]$subscriptionId = "default",
-    [string]$location = "default",
-	[string]$resourceGroupName = "default"
-)
+#param (
+#    [Parameter(Mandatory=$true)]
+#    [string]$uniqueName = "default", 
+#    [string]$subscriptionId = "default",
+#    [string]$location = "default",
+#	[string]$resourceGroupName = "default"
+#)
 
 $formsTraining = 'true'
 $customVisionTraining = 'true'
