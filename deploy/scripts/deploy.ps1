@@ -1,3 +1,5 @@
+
+
 ##################################################################
 #                                                                #
 #   Setup Script                                                 #
@@ -420,7 +422,7 @@ Write-Host Creating application insight account... -ForegroundColor Green
         }
 else
 {
-    Write-Host Resource Already Exist -ForegroundColor Green
+    Write-Host Resource Application Insights "$appInsightName" Already Exist -ForegroundColor Green
 }
 
 
@@ -1271,10 +1273,10 @@ New-AzResourceGroupDeployment `
 
 Pause 
 
-Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $azureEventGridApiConnectionName - within 2 minutes -ForegroundColor Green
+Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $office365ApiConnectionName - within 2 minutes -ForegroundColor Green
 $time=120
 do{
-Write-Host Remaining time for authorizing $azureEventGridApiConnectionName API connection : $time seconds -ForegroundColor Red
+Write-Host Remaining time for authorizing $office365ApiConnectionName API connection : $time seconds -ForegroundColor Red
 Sleep 1
 $time--
 } while($time -gt 0)
