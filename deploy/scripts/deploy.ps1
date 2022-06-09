@@ -443,24 +443,20 @@ $outArray.Add("v_appInsightName=$appInsightName")
 
 Write-Host Creating application insight account... -ForegroundColor Green
 
- $ExistingappInsightName=$appInsightName
- $AppInsights = Get-AzApplicationInsights –ResourceGroupName $resourceGroupName
- $ApplicationInsightsName=$AppInsights.Name
-
-
- if($ApplicationInsightsName -ne $ExistingappInsightName)
-        {
-    New-AzApplicationInsights `
+try
+{
+	Get-AzApplicationInsights `
+	-ResourceGroupName $resourceGroupName `
+	-Name $appInsightName
+}
+catch
+{
+	New-AzApplicationInsights `
 	-ResourceGroupName $resourceGroupName `
 	-Name $appInsightName `
 	-Location $location `
 	-Kind web
-        }
-else
-{
-    Write-Host Resource Application Insights "$appInsightName" Already Exist -ForegroundColor Green
 }
-
 
 
 $appInsightInstrumentationKey = (Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName).InstrumentationKey
