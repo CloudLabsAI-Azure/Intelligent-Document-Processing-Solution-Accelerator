@@ -53,7 +53,7 @@ CD C:\Users\Public\Desktop\Intelligent-Document-Processing\deploy\scripts
 #    [string]$subscriptionId = "default",
 #    [string]$location = "default",
 #	[string]$resourceGroupName = "default"
-#)
+#)#
 
 $formsTraining = 'true'
 $customVisionTraining = 'true'
