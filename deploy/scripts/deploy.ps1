@@ -1217,7 +1217,7 @@ New-AzResourceGroupDeployment `
 Pause 
 Start-Sleep -s 20
 Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $azureEventGridApiConnectionName - within 2 minutes -ForegroundColor Green
-$time=180
+$time=120
 do{
 Write-Host Remaining time for authorizing $azureEventGridApiConnectionName API connection : $time seconds -ForegroundColor Red
 Sleep 1
@@ -1307,7 +1307,7 @@ New-AzResourceGroupDeployment `
 Pause 
 Start-Sleep -s 20
 Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $office365ApiConnectionName - within 2 minutes -ForegroundColor Green
-$time=180
+$time=120
 do{
 Write-Host Remaining time for authorizing $office365ApiConnectionName API connection : $time seconds -ForegroundColor Red
 Sleep 1
