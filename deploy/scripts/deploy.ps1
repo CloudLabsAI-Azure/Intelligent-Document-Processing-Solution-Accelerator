@@ -2340,3 +2340,4 @@ foreach($row in $outArray) {
 }
 $outputArray | export-csv "msrpa.csv" -NoTypeInformation
 Write-Host Deployment complete. -ForegroundColor Green `n
+
