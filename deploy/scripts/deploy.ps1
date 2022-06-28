@@ -1,3 +1,5 @@
+Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
+
 CD C:\LabFiles
 
 $credsfilepath = ".\AzureCreds.txt"
@@ -1166,6 +1168,29 @@ else
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
 }
 
+$adminUsername="demouser"
+$adminPassword="Password.1!!"
+
+
+
+$AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoAdminLogon" -Value "1" -type String 
+Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultUsername" -Value "$($env:ComputerName)\$adminUsername" -type String  
+Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultPassword" -Value "$adminPassword" -type String
+Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoLogonCount" -Value "1" -type DWord
+
+$FileDir= "C:\Users\Public\Desktop"
+
+#reg add "HKLM\SOFTWARE\Policies\Google\Chrome" /v PasswordManagerEnable /t REG_DWORD /d 0
+#scheduled task
+$Trigger= New-ScheduledTaskTrigger -AtLogOn
+$User= "$($env:ComputerName)\$adminUsername" 
+$Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe" -Argument "-executionPolicy Unrestricted -File $FileDir\Ps-script.ps1"
+Register-ScheduledTask -TaskName "startextension" -Trigger $Trigger  -User $User -Action $Action -RunLevel Highest -Force
+
+Restart-Computer
+
+<#
 #----------------------------------------------------------------#
 #   Step 13 - Create API Connection and Deploy Logic app		 #
 #----------------------------------------------------------------#
@@ -1215,9 +1240,8 @@ New-AzResourceGroupDeployment `
 
 
 Pause 
-Start-Sleep -s 20
 Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $azureEventGridApiConnectionName - within 2 minutes -ForegroundColor Green
-$time=120
+$time=180
 do{
 Write-Host Remaining time for authorizing $azureEventGridApiConnectionName API connection : $time seconds -ForegroundColor Red
 Sleep 1
@@ -1305,9 +1329,9 @@ New-AzResourceGroupDeployment `
 
 
 Pause 
-Start-Sleep -s 20
+
 Write-Host Please go to - "Intelligent" - Resource Group and authorize EventGrid API connection - $office365ApiConnectionName - within 2 minutes -ForegroundColor Green
-$time=120
+$time=180
 do{
 Write-Host Remaining time for authorizing $office365ApiConnectionName API connection : $time seconds -ForegroundColor Red
 Sleep 1
@@ -2340,4 +2364,4 @@ foreach($row in $outArray) {
 }
 $outputArray | export-csv "msrpa.csv" -NoTypeInformation
 Write-Host Deployment complete. -ForegroundColor Green `n
-
+#>
