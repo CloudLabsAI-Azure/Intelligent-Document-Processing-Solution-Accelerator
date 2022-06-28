@@ -460,11 +460,11 @@ catch
 	-Kind web
 }
 
+Start-Sleep -s 20
 
 $appInsightInstrumentationKey = (Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName).InstrumentationKey
 $outArray.Add("v_appInsightInstrumentationKey=$appInsightInstrumentationKey")
 
-Start-Sleep -s 20
 
 #$funcStorageAccountName = $prefix + $id + "funcstor";
 $funcStorageAccountName = $prefix + "funcsa";
