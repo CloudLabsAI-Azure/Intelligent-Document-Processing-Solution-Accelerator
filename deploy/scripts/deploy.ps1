@@ -445,7 +445,22 @@ $outArray.Add("v_appInsightName=$appInsightName")
 
 Write-Host Creating application insight account... -ForegroundColor Green
 
-try
+$currentAppInsight = Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName
+
+if ($null -eq $currentAppInsight.Name) {
+ Write-Host Creating App insight $appInsightName -ForegroundColor Green
+	New-AzApplicationInsights `
+	-ResourceGroupName $resourceGroupName `
+	-Name $appInsightName `
+	-Location $location `
+	-Kind web
+}
+else
+{
+ Write-Host App insight $appInsightName exist -ForegroundColor Red
+}
+
+<#try
 {
 	Get-AzApplicationInsights `
 	-ResourceGroupName $resourceGroupName `
@@ -459,7 +474,7 @@ catch
 	-Location $location `
 	-Kind web
 }
-
+#>
 Start-Sleep -s 20
 
 $appInsightInstrumentationKey = (Get-AzApplicationInsights -ResourceGroupName $resourceGroupName -Name $appInsightName).InstrumentationKey
