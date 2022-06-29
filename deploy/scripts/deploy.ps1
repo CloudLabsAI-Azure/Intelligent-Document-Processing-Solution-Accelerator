@@ -976,7 +976,7 @@ if ($luisTraining -eq 'true')
 			}
 
 		}
-		
+		Start-Sleep -s 2
 	}
 
 	$luisModels
