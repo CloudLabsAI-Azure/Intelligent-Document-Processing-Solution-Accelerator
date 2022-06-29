@@ -1183,6 +1183,7 @@ else
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
 }
 
+<#
 $adminUsername="demouser"
 $adminPassword="Password.1!!"
 
@@ -1203,9 +1204,10 @@ $User= "$($env:ComputerName)\$adminUsername"
 $Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe" -Argument "-executionPolicy Unrestricted -File $FileDir\Ps-script.ps1"
 Register-ScheduledTask -TaskName "startextension" -Trigger $Trigger  -User $User -Action $Action -RunLevel Highest -Force
 
-Restart-Computer
+Restart-Computer 
+#>
 
-<#
+
 #----------------------------------------------------------------#
 #   Step 13 - Create API Connection and Deploy Logic app		 #
 #----------------------------------------------------------------#
@@ -2379,4 +2381,4 @@ foreach($row in $outArray) {
 }
 $outputArray | export-csv "msrpa.csv" -NoTypeInformation
 Write-Host Deployment complete. -ForegroundColor Green `n
-#>
+
