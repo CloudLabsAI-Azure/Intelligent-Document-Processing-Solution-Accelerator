@@ -1191,6 +1191,7 @@ else
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
 }
 
+Write-Host Completed CSE (part 1) -ForegroundColor Green
 
 $adminUsername="demouser"
 $adminPassword="Password.1!!"
