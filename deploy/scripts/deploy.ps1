@@ -932,7 +932,7 @@ if ($luisTraining -eq 'true')
 			$luisApplicationFilePath = $trainingLuisFilePath + $folder.Name + '\' + $file.Name
 			$luisApplicationTemplate = Get-Content $luisApplicationFilePath
 			$appVersion = '0.1'
-			
+			Start-Sleep -s 5
 			try
 			{
 				$luisAppResponse = Invoke-RestMethod -Method Post `
@@ -976,7 +976,7 @@ if ($luisTraining -eq 'true')
 			}
 
 		}
-		Start-Sleep -s 2
+		Start-Sleep -s 5
 	}
 
 	$luisModels
@@ -1191,7 +1191,7 @@ else
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
 }
 
-Write-Host Completed CSE (part 1) -ForegroundColor Green
+Write-Host Completed CSE 1st PART  -ForegroundColor Green
 
 $adminUsername="demouser"
 $adminPassword="Password.1!!"
