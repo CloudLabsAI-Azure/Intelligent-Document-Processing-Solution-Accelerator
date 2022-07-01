@@ -1,5 +1,3 @@
-Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
-
 CD C:\LabFiles
 
 $credsfilepath = ".\AzureCreds.txt"
