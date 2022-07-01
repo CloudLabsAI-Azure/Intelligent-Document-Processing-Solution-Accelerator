@@ -932,7 +932,7 @@ if ($luisTraining -eq 'true')
 			$luisApplicationFilePath = $trainingLuisFilePath + $folder.Name + '\' + $file.Name
 			$luisApplicationTemplate = Get-Content $luisApplicationFilePath
 			$appVersion = '0.1'
-			Start-Sleep -s 5
+			Start-Sleep -s 10
 			try
 			{
 				$luisAppResponse = Invoke-RestMethod -Method Post `
@@ -976,7 +976,7 @@ if ($luisTraining -eq 'true')
 			}
 
 		}
-		Start-Sleep -s 5
+		Start-Sleep -s 10
 	}
 
 	$luisModels
