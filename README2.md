@@ -7,3 +7,20 @@ Many organizations process different format of forms in various format. These fo
 ## Architecture
 
 ![Architecture Diagram](/images/architecture.png)
+
+## Process-Flow
+
+* Receive forms from Email or upload via the custom web application
+* The logic app will process the email attachment and persist the PDF form into blob storage
+  * Uploaded Form via the UI will be persisted directly into blob storage
+* Event grid will trigger the Logic app (PDF Forms processing)
+* Logic app will
+  * Convert the PDF (Azure function call)
+  * Classify the form type using Custom Vision
+  * Perform the blob operations organization (Azure Function Call)
+* Cognitive Search Indexer will trigger the AI Pipeline
+  * Execute standard out of the box skills (Key Phrase, NER)
+  * Execute custom skills (if applicable) to extract Key/Value pair from the received form
+  * Execute Luis skills (if applicable) to extract custom entities from the received form
+  * Execute CosmosDb skills to insert the extracted entities into the container as document
+* Custom UI provides the search capability into indexed document repository in Azure Search
