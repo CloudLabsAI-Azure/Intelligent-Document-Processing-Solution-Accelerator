@@ -24,3 +24,28 @@ Many organizations process different format of forms in various format. These fo
   * Execute Luis skills (if applicable) to extract custom entities from the received form
   * Execute CosmosDb skills to insert the extracted entities into the container as document
 * Custom UI provides the search capability into indexed document repository in Azure Search
+
+## Deployment
+
+Note: Most of the resources of this solution would have been already deployed.
+
+### Step0 - Before you start (Pre-requisites)
+
+These are the key pre-requisites to deploy this solution:
+1. When you access the lab, a virtual machine will startup with the logon task. (Image)
+2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` and the credentials provided in the lab guide.
+3. In the welcome window that appears, please select `Maybe Later` (Image)
+4. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. (Image)
+5. You will notice there are already few resources present. (Image)
+6. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
+
+
+
+
+
+
+
+
+
+
+
