@@ -58,7 +58,7 @@ These are the key pre-requisites to deploy this solution:
 8. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. (Image)
 ![Verify aegapi connection](/images/verify-aegapi-connected.jpg)
 9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
-![Verify aegapi connection](/images/aegapi-pswindow-continue.jpg)
+![Verify aegapi connection](/images/aegapi-press-continue.jpg)
 
 
 
