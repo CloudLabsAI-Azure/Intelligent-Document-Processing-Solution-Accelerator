@@ -37,10 +37,9 @@ These are the key pre-requisites to deploy this solution:
 2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` shortcut and the credentials provided in the lab guide.
 3. In the welcome window that appears, please select `Maybe Later`. 
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
-4. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. 
-5. You will notice there are already few resources present. (Image)
+4. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
 ![Portal Maybe Later](/images/few-resources.jpg)
-6. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
+5. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
 
 
 
