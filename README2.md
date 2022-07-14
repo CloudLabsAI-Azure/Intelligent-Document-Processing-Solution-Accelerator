@@ -32,13 +32,15 @@ Note: Most of the resources of this solution would have been already deployed.
 ### Step0 - Before you start (Pre-requisites)
 
 These are the key pre-requisites to deploy this solution:
-1. When you access the lab, a virtual machine will startup with the logon task. (Image)
-2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` and the credentials provided in the lab guide.
-3. In the welcome window that appears, please select `Maybe Later` (Image)
+1. When you access the lab, a virtual machine will startup with the PowerShell logon task.
+![Log on task](/images/logon-task-start.jpg)
+2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` shortcut and the credentials provided in the lab guide.
+3. In the welcome window that appears, please select `Maybe Later`. 
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
-5. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. (Image)
-6. You will notice there are already few resources present. (Image)
-7. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
+4. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. 
+5. You will notice there are already few resources present. (Image)
+![Portal Maybe Later](/images/few-resources.jpg)
+6. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
 
 
 
