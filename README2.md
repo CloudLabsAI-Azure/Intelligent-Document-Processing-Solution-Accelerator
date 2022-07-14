@@ -29,7 +29,7 @@ Many organizations process different format of forms in various format. These fo
 
 Note: Most of the resources of this solution would have been already deployed.
 
-### Step0 - Before you start (Pre-requisites)
+### STEP 0 - Before you start (Pre-requisites)
 
 These are the key pre-requisites to deploy this solution:
 1. When you access the lab, a virtual machine will startup with the PowerShell logon task.
@@ -39,8 +39,19 @@ These are the key pre-requisites to deploy this solution:
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
 4. Now, go to the `Resource groups` option under `Navigate`, and open the `Intelligent` resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
 ![Portal Maybe Later](/images/few-resources.jpg)
-5. Go back to the powershell window and wait for a few minutes as we manually need to authorize two API connections.
+5. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
 
+### STEP 1 - Authorize `idp``aegapi` API Connection
+
+1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app`. 
+2. We need to authorize the API connection in two minutes. Once you see the message `Authorize idpaegapi API Connection` in yellow, go to `Intelligent` resource group. 
+3. Search for the `idp``aegapi` resource in the search tab and click on it. This will now take you to a API connection page. (Image)
+4. In the API connection blade, select `Edit API connection`. (Image)
+5. Click on `Authorize` button to authorize. (Image)
+6. In the new window that pops up, select the ODL/lab account. (Image)
+7. `Save` the connection and check for the notification stating **Successfully edited API connection**. (Image)
+8. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. (Image)
+9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
 
 
 
