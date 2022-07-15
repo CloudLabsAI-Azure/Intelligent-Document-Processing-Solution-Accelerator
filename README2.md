@@ -60,14 +60,26 @@ These are the key pre-requisites to deploy this solution:
 8. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. (Image)
 ![Verify aegapi connection](/images/verify-aegapi-connected.jpg)
 9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
-![Verify aegapi connection](/images/aegapi-press-continue.jpg)
+![Continue after aegapi connection](/images/aegapi-press-continue.jpg)
 
+### STEP 2 - Authorize `idp``o365api` API Connection
 
-
-
-
-
-
+1. We need follow the same procedure to authorize `idpo366api` as we did in the previous step. We have to authorize the API connection in two minutes. Once you see the message `Authorize idpo365api API Connection` in yellow, go to `Intelligent` resource group. 
+![Authorize office365 api Yellow](/images/authorize-officeapi-yellow.jpg)
+2. Search for the `idp``o365api` resource in the search tab and click on it. This will now take you to a API connection page. 
+![select office365 api in RG](/images/officeapi-in-rg-intelligent.jpg)
+3. In the API connection blade, select `Edit API connection`. 
+![edit office365 api](/images/officeapi-edit-connection.jpg)
+4. Click on `Authorize` button to authorize. 
+![Authorize office365 api](/images/officeapi-authorize-button.jpg)
+5. In the new window that pops up, select the ODL/lab account. 
+![Select Account](/images/officeapi-authorize-window.jpg)
+6. `Save` the connection and check for the notification stating **Successfully edited API connection**. 
+![Save office365 api connection](/images/officeapi-save.jpg)
+7. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. 
+![Verify office365 api connection](/images/officeapi-verify-connected.jpg)
+8. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
+![Continue after office365 api connection](/images/officeapi-continue.jpg)
 
 
 
