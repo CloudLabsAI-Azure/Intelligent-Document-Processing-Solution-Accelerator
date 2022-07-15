@@ -44,7 +44,9 @@ These are the key pre-requisites to deploy this solution:
 ### STEP 1 - Authorize `idp``aegapi` API Connection
 
 1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app`. 
+![Step 12 API Yellow](/images/Step12.jpg)
 2. We need to authorize the API connection in two minutes. Once you see the message `Authorize idpaegapi API Connection` in yellow, go to `Intelligent` resource group. 
+![Authorize aegapi Yellow](/images/aegapi-authorize-yellow.jpg)
 3. Search for the `idp``aegapi` resource in the search tab and click on it. This will now take you to a API connection page. (Image)
 ![select aegapi in RG](/images/search-select-aegapi.jpg)
 4. In the API connection blade, select `Edit API connection`. (Image)
