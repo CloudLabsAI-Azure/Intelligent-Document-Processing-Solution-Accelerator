@@ -82,4 +82,4 @@ These are the key pre-requisites to deploy this solution:
 ![Continue after office365 api connection](/images/officeapi-continue.jpg)
 
 
-
+We have now authorized both the API connections, wait for the script execution to complete. Note that the PowerShell window will close once the script execution completes.
