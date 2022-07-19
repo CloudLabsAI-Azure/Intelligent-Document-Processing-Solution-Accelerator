@@ -140,3 +140,13 @@ We have now authorized both the API connections, wait for the script execution t
 ![Indexer Page Run Success](/images/Indexer-Success.jpg)
 
 We have now configured the Cognitive Search Knowledge Store.
+
+### STEP 2 - Power BI Content Analytics
+
+1. Open the Power BI report on the desktop with name `cognitive-search-content-analytics-template` (Image-ReportDesktop)
+2. If you get a popup window stating **Couldn't load the schema for the database model** and you are unable to close it like the below image (Image-schema-cant-load-popup-window)
+
+Then please come to the taskbar and close the blank window. (Image-Close-Error-Window)
+3. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
+4. Also close the **Collaborate and share**, and **Formatting just got easier** popups (Image-Close-Collaborate-share)(Image-Formatting-popup)
+5. 
