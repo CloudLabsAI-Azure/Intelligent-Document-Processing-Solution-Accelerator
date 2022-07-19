@@ -41,8 +41,10 @@ These are the key pre-requisites to deploy this solution:
 ![Few resources present in RG](/images/few-resources.jpg)
 5. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
 
-### STEP 1 - Authorize **idp<inject key="DeploymentID"></inject>aegapi** API Connection
+### STEP 1 - Authorize  **idp<inject key="DeploymentID" enableCopy="false" />aegapi** API Connection
 
+
+**idp<inject key="DeploymentID"></inject>aegapi**
 1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app`. 
 ![Step 12 API Yellow](/images/Step12.jpg)
 2. We need to authorize the API connection in two minutes. Once you see the message `Authorize idpaegapi API Connection` in yellow, go to `Intelligent` resource group. 
