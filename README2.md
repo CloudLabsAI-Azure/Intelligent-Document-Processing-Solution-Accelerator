@@ -120,3 +120,5 @@ We have now authorized both the API connections, wait for the script execution t
 17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page (Image-ImportNotification)
 18. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. (Image-IndexerProgress)
 19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
+
+We have now configured the Cognitive Search Knowledge Store.
