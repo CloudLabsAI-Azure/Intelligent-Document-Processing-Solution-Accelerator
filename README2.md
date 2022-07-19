@@ -150,4 +150,13 @@ Then please come to the taskbar and close the blank window. (Image-Close-Error-W
 3. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
 4. Also close the **Collaborate and share**, and **Formatting just got easier** popups (Image-Close-Collaborate-share)(Image-Formatting-popup)
 5. A popup with name `cognitive-search-content-analytics-template` will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. (Image-EnterParam)
-6. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group. Then search and select `idp<DID>sa` storage account (Image-)
+6. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-)
+7. Scroll down in the left blade and select `Shared Access Signature`
+8. Check all the check boxes as shown in the below image
+9. Select your timezone and set the expiry date to next day
+10. In the below radio button, select `HTTP & HTTPS`
+11. Copy the SAS token and paste it in the Power BI popup window and click on `load`. 
+12. Another popup window might appear seeking storage account key.
+13. Go back to the storage account and in the left blade, search for `Account Keys` and select it.
+14. Click on `Show keys`. Copy the first key and paste it in the Power BI popup seeking it and select `OK`
+15.   
