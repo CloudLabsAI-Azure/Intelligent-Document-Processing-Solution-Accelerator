@@ -83,3 +83,12 @@ These are the key pre-requisites to deploy this solution:
 
 
 We have now authorized both the API connections, wait for the script execution to complete. Note that the PowerShell window will close once the script execution completes.
+
+## Creating Knowledge Store and working with Power BI report
+
+### STEP 1 - Creating Knowledge Store
+
+1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service. (Image-SearchSelect)
+2. In the **Seacrh service** page, click on the `Import data` option which will lead you to a new page. (Image-Import data)
+3. Choose `Existing data source` from the drop down menu, then select the existing Data Source `processformsds` and clcik on `Next: Add cognitive skills (optional)` (Image-ConnectDS)
+4. 
