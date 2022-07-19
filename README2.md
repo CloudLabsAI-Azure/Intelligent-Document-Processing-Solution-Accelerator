@@ -117,5 +117,6 @@ We have now authorized both the API connections, wait for the script execution t
     * Interval (minutes): `5`
 15. Select `Submit` to complete the process of creating **Knowledge Store** (Image-IndexerSubmit)
 16. Once submitted, click on the **Bell** icon in the top right section of the Azure portal to see the notifications. (Image-NotificationOpen)
-17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation (Image-ImportNotification)
-18. 
+17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page (Image-ImportNotification)
+18. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. (Image-IndexerProgress)
+19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
