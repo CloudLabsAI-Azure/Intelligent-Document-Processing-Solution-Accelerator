@@ -34,13 +34,24 @@ Note: Most of the resources of this solution would have been already deployed.
 
 These are the key pre-requisites to deploy this solution:
 1. When you access the lab, a virtual machine will startup with the PowerShell logon task.
+
+
 ![Log on task](/images/logon-task-start.jpg)
+
 2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` shortcut and the credentials provided in the lab guide.
+
 3. In the welcome window that appears, please select `Maybe Later`. 
+
+
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
+
 4. Now, go to the `Resource groups` option under **Navigate**, and open the `Intelligent` resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
+
+
 ![Few resources present in RG](/images/few-resources.jpg)
+
 5. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
+
 
 ### STEP 1 - Authorize  **idp<inject key="DeploymentID" enableCopy="false" />aegapi** API Connection
 
