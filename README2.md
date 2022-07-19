@@ -159,4 +159,6 @@ Then please come to the taskbar and close the blank window. (Image-Close-Error-W
 12. Another popup window might appear seeking storage account key.
 13. Go back to the storage account and in the left blade, search for `Account Keys` and select it.
 14. Click on `Show keys`. Copy the first key and paste it in the Power BI popup seeking it and select `OK`
-15.   
+15.  **Deployment Id**:
+
+<inject key="DeploymentID"></inject>
