@@ -119,16 +119,23 @@ We have now authorized both the API connections, wait for the script execution t
 10. Choose the `idp<DID>sa` storage account (Image-SelectStorage)
 ![Select storage account](/images/select-storageAcc.jpg)
 11. Select the container `processforms` and click on `Select` (Image-SelectContainer)
+![Select Container](/images/select-container.jpg)
 12. Copy the Power BI parameters to a text file and save it, then select `Next: Customize target index` (Image-NextTaragetIndex) 
+![Copy the Power BI parameters](/images/next-targetIndex.jpg)
 13. In this tab, enter the **Index name** as `forms<DID>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
+![Index details](/images/customize-index.jpg)
 14. Provide the following details for the indexer, 
     * Name: `forms<DID>indexer` 
     * Schedule: `Custom` 
     * Interval (minutes): `5`
 15. Select `Submit` to complete the process of creating **Knowledge Store** (Image-IndexerSubmit)
+![Indexer details](/images/indexer-and-submit.jpg)
 16. Once submitted, click on the **Bell** icon in the top right section of the Azure portal to see the notifications. (Image-NotificationOpen)
+![Open Notification](/images/notification-open.jpg)
 17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page (Image-ImportNotification)
+![Open Cognitive search Notification](/images/Import-Notification.jpg)
 18. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. (Image-IndexerProgress)
+![Indexer Page Run In Progress](/images/Indexer-In-Progress.jpg)
 19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
-
+![Indexer Page Run Success](/images/Indexer-Success.jpg)
 We have now configured the Cognitive Search Knowledge Store.
