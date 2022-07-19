@@ -138,4 +138,5 @@ We have now authorized both the API connections, wait for the script execution t
 ![Indexer Page Run In Progress](/images/Indexer-In-Progress.jpg)
 19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
 ![Indexer Page Run Success](/images/Indexer-Success.jpg)
+
 We have now configured the Cognitive Search Knowledge Store.
