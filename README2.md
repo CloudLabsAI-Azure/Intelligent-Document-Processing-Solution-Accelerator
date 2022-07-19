@@ -122,7 +122,7 @@ We have now authorized both the API connections, wait for the script execution t
 ![Select Container](/images/select-container.jpg)
 12. Copy the Power BI parameters to a text file and save it, then select `Next: Customize target index` (Image-NextTaragetIndex) 
 ![Copy the Power BI parameters](/images/next-targetIndex.jpg)
-13. In this tab, enter the **Index name** as `forms<DID>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
+13. In this tab, enter the **Index name** as `forms<inject key="DeploymentID"></inject>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
 ![Index details](/images/customize-index.jpg)
 14. Provide the following details for the indexer, 
     * Name: `forms<DID>indexer` 
@@ -159,6 +159,6 @@ Then please come to the taskbar and close the blank window. (Image-Close-Error-W
 12. Another popup window might appear seeking storage account key.
 13. Go back to the storage account and in the left blade, search for `Account Keys` and select it.
 14. Click on `Show keys`. Copy the first key and paste it in the Power BI popup seeking it and select `OK`
-15.  **Deployment Id**:
+15. 
 
 <inject key="DeploymentID"></inject>
