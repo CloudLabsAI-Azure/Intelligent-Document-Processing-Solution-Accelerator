@@ -97,21 +97,27 @@ We have now authorized both the API connections, wait for the script execution t
 4. Click on the drop down button in the **Add cognitive skills** tab (Image-dropdown)
 ![Select Drop Down](/images/drop-down.jpg)
 5. Select the `idpcs` search service and click on the `Add enrichments` drop down (Image-AttachCS)
+![Attach Cognitive search](/images/select-attach-cognitiveservice.jpg)
 6. Make sure to fill the below details as per the image 
    * Skillset name: `form<DID>skillset`
    * Enable OCR and merge all text into **merged_content** field: `Check the box`
    * Source data field: `merged_content`
    * Enrichment granularity: `Pages (5000 characters chunks)`
    (Image-AddEnrichements)
+![Add enrichments](/images/Add-enrichments.jpg)
 7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. (Image-CheckboxNextSave)
+![Verify Skills](/images/checkbox-and-nextSave.jpg)
 8. In **Save enrichments** drop down, only select the below **Azure table projections**
    * Documents
    * Pages
    * Key phrases
    * Entities
    (Image-TableProjection)
+![Table projections](/images/select-table-projection.jpg)
 9. Now, we need the connection string of the storage account. Click on the `Choose an existing connection`, this will redirect to a new page to select the storage account. (Image-ConnectionString)
+![Storage Account Connection String](/images/choose-connectionString.jpg)
 10. Choose the `idp<DID>sa` storage account (Image-SelectStorage)
+![Select storage account](/images/select-storageAcc.jpg)
 11. Select the container `processforms` and click on `Select` (Image-SelectContainer)
 12. Copy the Power BI parameters to a text file and save it, then select `Next: Customize target index` (Image-NextTaragetIndex) 
 13. In this tab, enter the **Index name** as `forms<DID>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
