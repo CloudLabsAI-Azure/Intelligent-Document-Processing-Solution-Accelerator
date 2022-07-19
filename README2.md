@@ -53,31 +53,58 @@ These are the key pre-requisites to deploy this solution:
 5. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
 
 
-### STEP 1 - Authorize  **idp<inject key="DeploymentID" enableCopy="false" />aegapi** API Connection
+### STEP 1 - Authorize Event Grid API Connection
 
 
-1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app`. 
+1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app` 
+
+
 ![Step 12 API Yellow](/images/Step12.jpg)
-2. We need to authorize the API connection in two minutes. Once you see the message `Authorize idpaegapi API Connection` in yellow, go to `Intelligent` resource group. 
+
+2. We need to authorize the API connection in two minutes. Once you see the message **Authorize<inject key="DeploymentID" enableCopy="false" />API Connection** in yellow, go to **Intelligent** resource group. 
+
+
 ![Authorize aegapi Yellow](/images/aegapi-authorize-yellow.jpg)
-3. Search for the **idp<inject key="DeploymentID">aegapi</inject>** resource in the search tab and click on it. This will now take you to a API connection page. (Image)
+
+3. Search for the **idp<inject key="DeploymentID" enableCopy="false" />aegapi** resource in the search tab and click on it. This will now take you to a API connection page. (Image)
+
+
 ![select aegapi in RG](/images/search-select-aegapi.jpg)
+
 4. In the API connection blade, select `Edit API connection`. (Image)
+
+
 ![edit aegapi](/images/edit-aegapi-blade.jpg)
+
 5. Click on `Authorize` button to authorize. (Image)
+
+
 ![Authorize aegapi](/images/authorize-aegapi-button.jpg)
+
 6. In the new window that pops up, select the ODL/lab account. (Image)
+
+
 ![Select Account](/images/aegapi-authorize-window.jpg)
+
 7. `Save` the connection and check for the notification stating **Successfully edited API connection**. (Image)
+
+
 ![Save aegapi connection](/images/aegapi-save.jpg)
+
 8. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. (Image)
+
+
 ![Verify aegapi connection](/images/verify-aegapi-connected.jpg)
+
 9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
+
+
 ![Continue after aegapi connection](/images/aegapi-press-continue.jpg)
 
-### STEP 2 - Authorize `idp``o365api` API Connection
 
-1. We need follow the same procedure to authorize `idpo366api` as we did in the previous step. We have to authorize the API connection in two minutes. Once you see the message `Authorize idpo365api API Connection` in yellow, go to `Intelligent` resource group. 
+### STEP 2 - Authorize Office 365 API Connection
+
+1. We need follow the same procedure to authorize **idp<inject key="DeploymentID" enableCopy="false" />o365api** as we did in the previous step. We have to authorize the API connection in two minutes. Once you see the message `Authorize idpo365api API Connection` in yellow, go to `Intelligent` resource group. 
 ![Authorize office365 api Yellow](/images/authorize-officeapi-yellow.jpg)
 2. Search for the `idp``o365api` resource in the search tab and click on it. This will now take you to a API connection page. 
 ![select office365 api in RG](/images/officeapi-in-rg-intelligent.jpg)
