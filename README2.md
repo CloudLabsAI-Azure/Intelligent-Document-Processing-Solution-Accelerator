@@ -88,7 +88,23 @@ We have now authorized both the API connections, wait for the script execution t
 
 ### STEP 1 - Creating Knowledge Store
 
-1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service. (Image-SearchSelect)
+1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service reosurce. (Image-SearchSelect)
 2. In the **Seacrh service** page, click on the `Import data` option which will lead you to a new page. (Image-Import data)
 3. Choose `Existing data source` from the drop down menu, then select the existing Data Source `processformsds` and clcik on `Next: Add cognitive skills (optional)` (Image-ConnectDS)
-4. 
+4. Click on the drop down button in the **Add cognitive skills** tab (Image-dropdown)
+5. Select the `idpcs` search service and click on the `Add enrichments` drop down (Image-AttachCS)
+6. Make sure to fill the below details as per the image 
+   * Skillset name: `form<DID>skillset`
+   * Enable OCR and merge all text into **merged_content** field: `Check the box`
+   * Source data field: `merged_content`
+   * Enrichment granularity: `Pages (5000 characters chunks)`
+   (Image-AddEnrichements)
+7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. (Image-CheckboxNextSave)
+8. In **Save enrichments** drop down, only select the below **Azure table projections**
+   * Documents
+   * Pages
+   * Key phrases
+   * Entities
+   (Image-TableProjection)
+9. Now, we need the connection string of the storage account. Click on the `Choose an existing connection`, this will redirect to a new page to select the storage account. (Image-ConnectionString)
+10.  
