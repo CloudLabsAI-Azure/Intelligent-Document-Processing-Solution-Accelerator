@@ -115,5 +115,4 @@ We have now authorized both the API connections, wait for the script execution t
     * Name: `forms<DID>indexer` 
     * Schedule: `Custom` 
     * Interval (minutes): `5`
-    Select `Submit` to complete the process of creating **Knowledge Store**
-15. 
+15. Select `Submit` to complete the process of creating **Knowledge Store** (Image-IndexerSubmit)
