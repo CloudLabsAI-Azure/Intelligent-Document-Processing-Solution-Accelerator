@@ -107,4 +107,6 @@ We have now authorized both the API connections, wait for the script execution t
    * Entities
    (Image-TableProjection)
 9. Now, we need the connection string of the storage account. Click on the `Choose an existing connection`, this will redirect to a new page to select the storage account. (Image-ConnectionString)
-10.  
+10. Choose the `idp<DID>sa` storage account (Image-SelectStorage)
+11. Select the container `processforms` and click on `Select` (Image-SelectContainer)
+12.  
