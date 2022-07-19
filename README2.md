@@ -89,9 +89,13 @@ We have now authorized both the API connections, wait for the script execution t
 ### STEP 1 - Creating Knowledge Store
 
 1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service reosurce. (Image-SearchSelect)
+![Select Cognitive search service](/images/Search-select-rg.jpg)
 2. In the **Seacrh service** page, click on the `Import data` option which will lead you to a new page. (Image-Import data)
+![Import data](/images/Import-data.jpg)
 3. Choose `Existing data source` from the drop down menu, then select the existing Data Source `processformsds` and clcik on `Next: Add cognitive skills (optional)` (Image-ConnectDS)
+![Select Data source](/images/Connect-DataSource.jpg)
 4. Click on the drop down button in the **Add cognitive skills** tab (Image-dropdown)
+![Select Drop Down](/images/drop-down.jpg)
 5. Select the `idpcs` search service and click on the `Add enrichments` drop down (Image-AttachCS)
 6. Make sure to fill the below details as per the image 
    * Skillset name: `form<DID>skillset`
