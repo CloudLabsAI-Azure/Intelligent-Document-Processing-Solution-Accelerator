@@ -1,4 +1,4 @@
-## Step4
+## Step1
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -129,7 +129,7 @@ These are the key pre-requisites to deploy this solution:
 
 ![Select Account](/images/officeapi-authorize-window.jpg)
 
-6. **Save** the connection and check for the notification stating **Successfully edited API connection**. 
+6. **Save** ***(1)*** the connection and check for the notification stating **Successfully edited API connection** ***(2)***. 
 
 
 ![Save office365 api connection](/images/officeapi-save.jpg)
@@ -151,42 +151,41 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ### STEP 1 - Creating Knowledge Store
 
-1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service reosurce. (Image-SearchSelect)
+1. In the **Intelligent** resource group, search and select **idp<inject key="DeploymentID" enableCopy="false" />azs** cognitive search service reosurce.
 
 
 ![Select Cognitive search service](/images/Search-select-rg.jpg)
 
-2. In the **Seacrh service** page, click on the `Import data` option which will lead you to a new page. (Image-Import data)
+2. In the **Seacrh service** page, click on the **Import data** option which will lead you to a new page.
 
 
 ![Import data](/images/Import-data.jpg)
 
-3. Choose `Existing data source` from the drop down menu, then select the existing Data Source `processformsds` and clcik on `Next: Add cognitive skills (optional)` (Image-ConnectDS)
+3. Choose **Existing data source** ***(1)*** from the drop down menu, then select the existing Data Source **processformsds** ***(2)*** and clcik on **Next: Add cognitive skills (optional)** ***(3)***. 
 
 
 ![Select Data source](/images/Connect-DataSource.jpg)
 
-4. Click on the drop down button in the **Add cognitive skills** tab (Image-dropdown)
+4. Click on the drop down button in the **Add cognitive skills** tab. 
 
 
 ![Select Drop Down](/images/drop-down.jpg)
 
-5. Select the `idpcs` search service and click on the `Add enrichments` drop down (Image-AttachCS)
+5. Select the **idp<inject key="DeploymentID" enableCopy="false" />cs** ***(1)*** search service and click on the **Add enrichments** ***(2)*** drop down. 
 
 
 ![Attach Cognitive search](/images/select-attach-cognitiveservice.jpg)
 
 6. Make sure to fill the below details as per the image 
-   * Skillset name: `form<DID>skillset`
-   * Enable OCR and merge all text into **merged_content** field: `Check the box`
-   * Source data field: `merged_content`
-   * Enrichment granularity: `Pages (5000 characters chunks)`
-   (Image-AddEnrichements)
+   * Skillset name: **forms<inject key="DeploymentID" enableCopy="false" />-skillset**
+   * Enable OCR and merge all text into **merged_content** field: **Check the box**
+   * Source data field: **merged_content**
+   * Enrichment granularity: **Pages (5000 characters chunks)**
 
 
 ![Add enrichments](/images/Add-enrichments.jpg)
 
-7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. (Image-CheckboxNextSave)
+7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. 
 
 
 ![Verify Skills](/images/checkbox-and-nextSave.jpg)
@@ -196,61 +195,61 @@ We have now authorized both the API connections. Go back to the PowerShell windo
    * Pages
    * Key phrases
    * Entities
-   (Image-TableProjection)
+  
 
 
 ![Table projections](/images/select-table-projection.jpg)
 
-9. Now, we need the connection string of the storage account. Click on the `Choose an existing connection`, this will redirect to a new page to select the storage account. (Image-ConnectionString)
+9. Now, we need the connection string of the storage account. Click on the **Choose an existing connection**, this will redirect to a new page to select the storage account. 
 
 
 ![Storage Account Connection String](/images/choose-connectionString.jpg)
 
-10. Choose the `idp<DID>sa` storage account (Image-SelectStorage)
+10. Choose the **idp<inject key="DeploymentID" enableCopy="false" />sa** storage account.
 
 
 ![Select storage account](/images/select-storageAcc.jpg)
 
-11. Select the container `processforms` and click on `Select` (Image-SelectContainer)
+11. Select the container **processforms** and click on **Select**.  
 
 
 ![Select Container](/images/select-container.jpg)
 
-12. Copy the Power BI parameters to a text file and save it, then select `Next: Customize target index` (Image-NextTaragetIndex) 
+12. Copy the Power BI parameters to a text file and save it, then select **Next: Customize target index**.  
 
 
 ![Copy the Power BI parameters](/images/next-targetIndex.jpg)
 
-13. In this tab, enter the **Index name** as `forms<inject key="DeploymentID"></inject>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
+13. In this tab, enter the **Index name** as **forms<inject key="DeploymentID" enableCopy="false" />-index** and select **Next: Create an indexer**. 
 
 
 ![Index details](/images/customize-index.jpg)
 
 14. Provide the following details for the indexer, 
-    * Name: `forms<DID>indexer` 
-    * Schedule: `Custom` 
-    * Interval (minutes): `5`
-15. Select `Submit` to complete the process of creating **Knowledge Store** (Image-IndexerSubmit)
+    * Name: **forms<inject key="DeploymentID" enableCopy="false" />-indexer** ***(1)***
+    * Schedule: **Custom** ***(2)***
+    * Interval (minutes): **5** ***(3)***
+    * Select **Submit** ***(4)*** to complete the process of creating **Knowledge Store** 
 
 
-![Indexer details](/images/indexer-and-submit.jpg)
+![Indexer details](/images/indexer-and-submit2.jpg)
 
-16. Once submitted, click on the **Bell** icon in the top right section of the Azure portal to see the notifications. (Image-NotificationOpen)
+15. Once submitted, click on the **Bell** icon in the top right section of the Azure portal to see the notifications. 
 
 
 ![Open Notification](/images/notification-open.jpg)
 
-17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page (Image-ImportNotification)
+16. Select the text **Import successfully configured, click here to monitor the indexer progress** in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page.
 
 
 ![Open Cognitive search Notification](/images/Import-Notification.jpg)
 
-18. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. (Image-IndexerProgress)
+17. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. 
 
 
 ![Indexer Page Run In Progress](/images/Indexer-In-Progress.jpg)
 
-19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
+18. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it.
 
 
 ![Indexer Page Run Success](/images/Indexer-Success.jpg)
