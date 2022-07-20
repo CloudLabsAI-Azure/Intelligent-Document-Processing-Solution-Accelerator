@@ -1,4 +1,3 @@
-## Version: 12
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -408,6 +407,7 @@ We have now explored Power BI Cognitive search content analytics report.
 ![Drag drop files](/images/drag-drop-files.jpg)
 
 8. Select the file to upload and wait for 5 minutes as the cognitive search enrichment pipeline runs every 5 minutes.
+
 9. You can now go back to **Search** section and search for the word present in the file that was just uploaded.
 
 We have now completed exploring the Cognitive Search UI.
