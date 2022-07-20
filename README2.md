@@ -177,7 +177,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Import data](/images/Import-data.jpg)
 
-3. Choose **Existing data source** ***(1)*** from the drop down menu, then select the existing Data Source **processformsds** ***(2)*** and clcik on **Next: Add cognitive skills (optional)** ***(3)***. 
+3. Choose **Existing data source** ***(1)*** from the drop down menu, then select the existing Data Source **processformsds** ***(2)*** and click on **Next: Add cognitive skills (optional)** ***(3)***. 
 
 
 ![Select Data source](/images/Connect-DataSource.jpg)
