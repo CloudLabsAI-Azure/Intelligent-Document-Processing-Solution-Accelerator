@@ -1,4 +1,4 @@
-## Version: 7
+## Version: 8
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -229,7 +229,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 11. Select the container **processforms** ***(1)*** and click on **Select** ***(2)***.  
 
 
-![Select Container](/images/select-container.jpg)
+![Select Container](/images/select-container2.jpg)
 
 12. Copy the Power BI parameters to a text file and save it, then select **Next: Customize target index**.  
 
