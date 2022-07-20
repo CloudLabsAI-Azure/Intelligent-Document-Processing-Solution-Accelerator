@@ -193,21 +193,39 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Schema popup window](/images/schema-cant-load-popup-window.jpg)
 
-Then please come to the taskbar and close the blank window. (Image-Close-Error-Window)
+3. Come to the taskbar and close the blank window. (Image-Close-Error-Window)
 
 
 ![Close error window](/images/Close-Error-Window.jpg)
 
-3. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
-
+4. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
 
 
 ![Close Schema popup](/images/Cant-load-DB-schema.jpg)
 
-4. Also close the **Collaborate and share**, and **Formatting just got easier** popups (Image-Close-Collaborate-share)(Image-Formatting-popup)
-5. A popup with name `cognitive-search-content-analytics-template` will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. (Image-EnterParam)
-6. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
+5. Also close the **Collaborate and share**, and **Formatting just got easier** popups, if you get (Image-Close-Collaborate-share)(Image-Formatting-popup)
+
+
+![Close Collaborate Share](/images/Close-Collaborate-share.jpg)
+
+
+![Close Formatting popup](/images/Formatting-popup.jpg)
+
+6. A popup with name `cognitive-search-content-analytics-template` will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. (Image-EnterParam)
+
+
+![Provide Parameters](/images/enter-param.jpg)
+
+7. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
+
+
+![Search and select storage account](/images/search-select-storage-InRG.jpg)
+
 7. Scroll down in the storage account left blade and select `Shared Access Signature` under **Security + networking** (Image-SAS-blade)
+
+
+![Storage account SAS blade](/images/SAS-blade.jpg)
+
 8. Check all the check boxes as shown in the below image (Image-Check-AllBoxes)
 9. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**(Image-DateTime-Protocol-GenerateSAS)
 10. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on `load`. (Image-Copy-SASToken)
