@@ -1,4 +1,4 @@
-## Version: 11
+## Version: 12
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -324,12 +324,12 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Check all boxes](/images/Check-AllBoxes.jpg)
 
-10. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**.
+10. Set the expiry date to next day and select your **Timezone** ***(1)***. Choose the Allowed protocols as **HTTP & HTTPS** ***(2)*** and click on **Generate SAS and connection string** ***(3)***.
 
 
-![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS.jpg)
+![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS2.jpg)
 
-11. Copy the **SAS token** and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. (Image-Copy-SASToken)
+11. Copy the **SAS token** and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. 
 
 
 ![Copy SAS Token](/images/Copy-SASToken.jpg)
