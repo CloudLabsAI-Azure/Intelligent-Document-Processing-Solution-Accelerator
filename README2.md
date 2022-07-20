@@ -1,4 +1,4 @@
-## Version: 4
+## Version: 5
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -126,7 +126,7 @@ These are the key pre-requisites to deploy this solution:
 2. Search for the **idp<inject key="DeploymentID" enableCopy="false" />o365api** resource in the search tab and click on it. This will now take you to a API connection page. 
 
 
-![select office365 api in RG](/images/officeapi-in-rg-intelligent.jpg)
+![select office365 api in RG](/images/Search-select-OfficeAPI.jpg)
 
 3. In the API connection blade, select **Edit API connection**. 
 
