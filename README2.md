@@ -198,9 +198,9 @@ Then please come to the taskbar and close the blank window. (Image-Close-Error-W
 11. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for `Access Keys` and select it. (Image-Select-AccessKeys)
 12. Click on `Show keys` and copy the first key. (Image-showKey)
 13. Paste the copied key in the Power BI popup seeking it and select `OK` (Image-AccountKey)
-14. A new popup with name **Refresh** will show up. Wait for a few seconds and click on `Continue` (Image-Cintinue)
-15. 
-16. 
-17. 
+14. A new popup with name **Refresh** will show up. Click on the `Continue` button that will appear (Image-Cintinue)
+15. Wait for a few seconds, and your report will load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. (Image-CognitiveSearch)
+16. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. (Image-KeyphraseViewer)
+
 
 <inject key="DeploymentID"></inject>
