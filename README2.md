@@ -61,7 +61,7 @@ These are the key pre-requisites to deploy this solution:
 
 ![Step 12 API Yellow](/images/Step12.jpg)
 
-2. We need to authorize the API connection in two minutes. Once you see the message **Authorize<inject key="DeploymentID" enableCopy="false" />API Connection** in yellow, go to **Intelligent** resource group. 
+2. We need to authorize the API connection in two minutes. Once you see the message **Authorize idp<inject key="DeploymentID" enableCopy="false" />aegpi API Connection** in yellow, go to **Intelligent** resource group. 
 
 
 ![Authorize aegapi Yellow](/images/aegapi-authorize-yellow.jpg)
@@ -354,4 +354,4 @@ We have now configured the Cognitive Search Knowledge Store.
 
 We have now expored Power BI Cognitive search content analytics report.
 
-<inject key="DeploymentID"></inject>
+
