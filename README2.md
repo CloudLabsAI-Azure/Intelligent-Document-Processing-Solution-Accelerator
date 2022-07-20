@@ -354,4 +354,12 @@ We have now configured the Cognitive Search Knowledge Store.
 
 We have now expored Power BI Cognitive search content analytics report.
 
+## Acessing the Search UI
+
+1. Go back to the **Intelligent** resource group. Then, search and select **idp<inject key="DeploymentID" enableCopy="false" />webapp**. (Image-SearchSelect-Webapp-RG.jpg)
+2. In the App service page, click on the **URL** present in the Overview blade. This will open the Search UI/Web app in a new tab. (Image-Click-URL.jpg)
+3. A webpage will load. Select **Search** in the top menu bar. (Image-WebApp-Search.jpg)
+4. Skip the tutorial by clicking on the **Skip Tutorial** popup. (Image-skipTutorial.jpg)
+5. You can use the **Search tab** for searching the words from the forms uploaded and even explore each of the text cognitive skills by selecting them. (Image-text-cognitive-skills.jpg) 
+6. 
 
