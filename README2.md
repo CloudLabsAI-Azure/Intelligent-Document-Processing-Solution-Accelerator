@@ -184,10 +184,26 @@ We have now configured the Cognitive Search Knowledge Store.
 ### STEP 2 - Power BI Content Analytics
 
 1. Open the Power BI report on the desktop with name `cognitive-search-content-analytics-template` (Image-ReportDesktop)
+
+
+![Power BI template desktop](/images/report-desktop.jpg)
+
 2. If you get a popup window stating **Couldn't load the schema for the database model** and you are unable to close it like the below image (Image-schema-cant-load-popup-window)
 
+
+![Schema popup window](/images/schema-cant-load-popup-window.jpg)
+
 Then please come to the taskbar and close the blank window. (Image-Close-Error-Window)
+
+
+![Close error window](/images/Close-Error-Window.jpg)
+
 3. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
+
+
+
+![Close Schema popup](/images/Cant-load-DB-schema.jpg)
+
 4. Also close the **Collaborate and share**, and **Formatting just got easier** popups (Image-Close-Collaborate-share)(Image-Formatting-popup)
 5. A popup with name `cognitive-search-content-analytics-template` will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. (Image-EnterParam)
 6. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
