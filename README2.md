@@ -123,7 +123,7 @@ These are the key pre-requisites to deploy this solution:
 
 ![Authorize office365 api Yellow](/images/authorize-officeapi-yellow.jpg)
 
-2. Search for the **idp<inject key="DeploymentID" enableCopy="false" />o365api** resource in the search tab and click on it. This will now take you to a API connection page. 
+2. Search for the **idp<inject key="DeploymentID" enableCopy="false" />o365api** resource in the resources search tab and click on it. This will now take you to a API connection page. 
 
 
 ![select office365 api in RG](/images/Search-select-OfficeAPI.jpg)
