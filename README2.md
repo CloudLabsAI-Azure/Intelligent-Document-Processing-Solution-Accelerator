@@ -1,4 +1,4 @@
-## Version: 3
+## Version: 4
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -112,6 +112,8 @@ These are the key pre-requisites to deploy this solution:
 
 
 ![Continue after aegapi connection](/images/aegapi-press-continue.jpg)
+
+
 
 
 ### STEP 2 - Authorize Office 365 API Connection
