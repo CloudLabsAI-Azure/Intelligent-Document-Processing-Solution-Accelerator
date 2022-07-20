@@ -363,4 +363,7 @@ We have now expored Power BI Cognitive search content analytics report.
 5. You can use the **Search tab** for searching the words from the forms uploaded and even explore each of the text cognitive skills by selecting them. (Image-text-cognitive-skills.jpg) 
 6. We can even upload the files manually to cognitive search. Click on **Upload files** in the top menu bar, this will provide you with a user interface to upload the files. (Image-upload-files)
 7. Drag and drop files into the red zone to add them to the upload list, or click anywhere within the red block to open a file dialog. (Image-drag-drop-files.jpg)
-8. Select the file to upload. Wait for 5
+8. Select the file to upload and wait for 5 minutes as the cognitive search enrichment pipeline runs every 5 minutes.
+9. You can now go back to **Search** section and search for the word present in the file that was just uploaded.
+
+We have now completed exploring the Cognitive Search UI.
