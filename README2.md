@@ -118,7 +118,7 @@ These are the key pre-requisites to deploy this solution:
 
 ### STEP 2 - Authorize Office 365 API Connection
 
-1. We need follow the same procedure to authorize **idp<inject key="DeploymentID" enableCopy="false" />o365api** as we did in the previous step. We have to authorize the API connection in two minutes. Once you see the message **Authorize idpidp<inject key="DeploymentID" enableCopy="false" />o365api API Connection** in yellow, go to **Intelligent** resource group. 
+1. We need follow the same procedure to authorize the Office 365 API as we did for the Event Grid API. We have to authorize the API connection in two minutes. Once you see the message **Authorize idpidp<inject key="DeploymentID" enableCopy="false" />o365api API Connection** in yellow, go to **Intelligent** resource group. 
 
 
 ![Authorize office365 api Yellow](/images/authorize-officeapi-yellow.jpg)
