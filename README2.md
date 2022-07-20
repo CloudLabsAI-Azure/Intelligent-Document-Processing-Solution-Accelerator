@@ -38,14 +38,14 @@ These are the key pre-requisites to deploy this solution:
 
 ![Log on task](/images/logon-task-start.jpg)
 
-2. While the powershell logon task runs in background, log in to the Azure portal using the `Microsoft Edge browser` shortcut and the credentials provided in the lab guide.
+2. While the powershell logon task runs in background, log in to the Azure portal using the **Microsoft Edge browser** shortcut and the credentials provided in the lab guide.
 
-3. In the welcome window that appears, please select `Maybe Later`. 
+3. In the welcome window that appears, please select **Maybe Later**. 
 
 
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
 
-4. Now, go to the `Resource groups` option under **Navigate**, and open the `Intelligent` resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
+4. Now, go to the **Resource groups** option under **Navigate**, and open the **Intelligent** resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
 
 
 ![Few resources present in RG](/images/few-resources.jpg)
@@ -56,7 +56,7 @@ These are the key pre-requisites to deploy this solution:
 ### STEP 1 - Authorize Event Grid API Connection
 
 
-1. Wait for the step in the script that states `STEP 12 - Create API Connection and Deploy Logic app` 
+1. Wait for the step in the script that states **STEP 12 - Create API Connection and Deploy Logic app**.
 
 
 ![Step 12 API Yellow](/images/Step12.jpg)
@@ -66,37 +66,37 @@ These are the key pre-requisites to deploy this solution:
 
 ![Authorize aegapi Yellow](/images/aegapi-authorize-yellow.jpg)
 
-3. Search for the **idp<inject key="DeploymentID" enableCopy="false" />aegapi** resource in the search tab and click on it. This will now take you to a API connection page. (Image)
+3. Search for the **idp<inject key="DeploymentID" enableCopy="false" />aegapi** resource in the search tab and click on it. This will now take you to a API connection page. 
 
 
 ![select aegapi in RG](/images/search-select-aegapi.jpg)
 
-4. In the API connection blade, select `Edit API connection`. (Image)
+4. In the API connection blade, select **Edit API connection**. 
 
 
 ![edit aegapi](/images/edit-aegapi-blade.jpg)
 
-5. Click on `Authorize` button to authorize. (Image)
+5. Click on **Authorize** button to authorize. 
 
 
 ![Authorize aegapi](/images/authorize-aegapi-button.jpg)
 
-6. In the new window that pops up, select the ODL/lab account. (Image)
+6. In the new window that pops up, select the ODL/lab account. 
 
 
 ![Select Account](/images/aegapi-authorize-window.jpg)
 
-7. `Save` the connection and check for the notification stating **Successfully edited API connection**. (Image)
+7. **Save** ***(1)*** the connection and check for the notification stating **Successfully edited API connection** ***(2)***.
 
 
 ![Save aegapi connection](/images/aegapi-save.jpg)
 
-8. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. (Image)
+8. Now go back to the **Overview** page and verify if the status shows **Connected**, else click on **Refresh** a few times as there could be some delays in the backend. 
 
 
 ![Verify aegapi connection](/images/verify-aegapi-connected.jpg)
 
-9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
+9. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message **Press any key to continue**. 
 
 
 ![Continue after aegapi connection](/images/aegapi-press-continue.jpg)
