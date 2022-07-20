@@ -1,4 +1,4 @@
-## Version: 8
+## Version: 10
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -192,14 +192,14 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Attach Cognitive search](/images/select-attach-cognitiveservice.jpg)
 
-6. Make sure to fill the below details as per the image 
-   * Skillset name: **forms<inject key="DeploymentID" enableCopy="false" />-skillset**
-   * Enable OCR and merge all text into **merged_content** field: **Check the box**
-   * Source data field: **merged_content**
-   * Enrichment granularity: **Pages (5000 characters chunks)**
+6. Make sure to fill the below details as per the image below
+   * Skillset name: **forms<inject key="DeploymentID" enableCopy="false" />-skillset** ***(1)***
+   * Enable OCR and merge all text into **merged_content** field: **Check the box** ***(2)***
+   * Source data field: **merged_content** ***(3)***
+   * Enrichment granularity: **Pages (5000 characters chunks)** ***(4)***
 
 
-![Add enrichments](/images/Add-enrichments.jpg)
+![Add enrichments](/images/Add-enrichments2.jpg)
 
 7. Scroll down and select the **Text Cognitive Skills** as per the image below. Then, select the **Save enrichments to a knowledge store** drop down.
 
