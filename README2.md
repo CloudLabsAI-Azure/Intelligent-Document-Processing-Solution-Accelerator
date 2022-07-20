@@ -352,41 +352,41 @@ We have now configured the Cognitive Search Knowledge Store.
 ![Keyphrase-Graph-Viewer Tab](/images/keyphrase-viewer.jpg)
 
 
-We have now expored Power BI Cognitive search content analytics report.
+We have now explored Power BI Cognitive search content analytics report.
 
 ## Acessing the Search UI
 
-1. Go back to the **Intelligent** resource group. Then, search and select **idp<inject key="DeploymentID" enableCopy="false" />webapp**. (Image-SearchSelect-Webapp-RG.jpg)
+1. Go back to the **Intelligent** resource group. Then, search and select **idp<inject key="DeploymentID" enableCopy="false" />webapp**. 
 
 
 ![Select cognitive search RG](/images/SearchSelect-Webapp-RG.jpg)
 
-2. In the App service page, click on the **URL** present in the Overview blade. This will open the Search UI/Web app in a new tab. (Image-Click-URL.jpg)
+2. In the App service page, click on the **URL** present in the Overview blade. This will open the Search UI/Web app in a new tab. 
 
 
 ![Open Web App Url](/images/Click-URL.jpg)
 
-3. A webpage will load. Select **Search** in the top menu bar. (Image-WebApp-Search.jpg)
+3. A webpage will load. Select **Search** in the top menu bar. 
 
 
 ![Search menu bar](/images/WebApp-Search.jpg)
 
-4. Skip the tutorial by clicking on the **Skip Tutorial** popup. (Image-skipTutorial.jpg)
+4. Skip the tutorial by clicking on the **Skip Tutorial** popup. 
 
 
 ![Skip tutorial](/images/skipTutorial.jpg)
 
-5. You can use the **Search tab** for searching the words from the forms uploaded and even explore each of the text cognitive skills by selecting them. (Image-text-cognitive-skills.jpg) 
+5. You can use the **Search tab** for searching the words from the forms uploaded and even explore each of the text cognitive skills by selecting them. 
 
 
 ![Search tab](/images/text-cognitive-skills.jpg)
 
-6. We can even upload the files manually to cognitive search. Click on **Upload files** in the top menu bar, this will provide you with a user interface to upload the files. (Image-upload-files)
+6. We can even upload the files manually to cognitive search. Click on **Upload files** in the top menu bar, this will provide you with a user interface to upload the files. 
 
 
 ![Upload Files](/images/upload-files.jpg)
 
-7. Drag and drop files into the red zone to add them to the upload list, or click anywhere within the red block to open a file dialog. (Image-drag-drop-files.jpg)
+7. Drag and drop files into the red zone to add them to the upload list, or click anywhere within the red block to open a file dialog. 
 
 
 ![Drag drop files](/images/drag-drop-files.jpg)
