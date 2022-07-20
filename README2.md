@@ -259,70 +259,71 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ### STEP 2 - Power BI Content Analytics
 
-1. Open the Power BI report on the desktop with name `cognitive-search-content-analytics-template` (Image-ReportDesktop)
+1. Open the Power BI report on the desktop with name **cognitive-search-content-analytics-template**.
 
 
 ![Power BI template desktop](/images/report-desktop.jpg)
 
-2. If you get a popup window stating **Couldn't load the schema for the database model** and you are unable to close it like the below image (Image-schema-cant-load-popup-window)
+2. If you get a popup window stating **Couldn't load the schema for the database model** and you are unable to close it like the below image. 
 
 
 ![Schema popup window](/images/schema-cant-load-popup-window.jpg)
 
-3. Come to the taskbar and close the blank window. (Image-Close-Error-Window)
+3. Come to the taskbar and close the blank window. 
 
 
 ![Close error window](/images/Close-Error-Window.jpg)
 
-4. Now go back to the Power BI window and try closing the popup. (Image-Cant-load-DB-schema)
+4. Now go back to the Power BI window and try closing the popup. 
 
 
 ![Close Schema popup](/images/Cant-load-DB-schema.jpg)
 
-5. Also close the **Collaborate and share**, and **Formatting just got easier** popups, if you get (Image-Close-Collaborate-share)(Image-Formatting-popup)
+5. Also close the **Collaborate and share**, and **Formatting just got easier** popups, if you get any. 
 
 
 ![Close Collaborate Share](/images/Close-Collaborate-share.jpg)
 
 
+
 ![Close Formatting popup](/images/Formatting-popup.jpg)
 
-6. A popup with name `cognitive-search-content-analytics-template` will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. (Image-EnterParam)
+6. A popup with name **cognitive-search-content-analytics-template** will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. 
 
 
 ![Provide Parameters](/images/enter-param.jpg)
 
-7. To get the **StorageAccountSasUri**, please revert back to **Intelligent** resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
+7. To get the **StorageAccountSasUri**, please revert back to **Intelligent** resource group in Azure. Then search and select **idp<inject key="DeploymentID" enableCopy="false" />sa** storage account. 
 
 
 ![Search and select storage account](/images/search-select-storage-InRG.jpg)
 
-8. Scroll down in the storage account left blade and select **Shared Access Signature** under **Security + networking** (Image-SAS-blade)
+8. Scroll down in the storage account left blade and select **Shared Access Signature** under **Security + networking**.
 
 
 ![Storage account SAS blade](/images/SAS-blade.jpg)
 
-9. Check all the check boxes as shown in the below image (Image-Check-AllBoxes)
+9. Check all the check boxes as shown in the below image.
 
 
 ![Check all boxes](/images/Check-AllBoxes.jpg)
 
-10. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**(Image-DateTime-Protocol-GenerateSAS)
+10. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**.
 
 
 ![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS.jpg)
 
-11. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. (Image-Copy-SASToken)
+11. Copy the **SAS token** and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. (Image-Copy-SASToken)
 
 
 ![Copy SAS Token](/images/Copy-SASToken.jpg)
 
-12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for **Access Keys** and select it. (Image-Select-AccessKeys)
+12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for **Access Keys** and select it. 
 
 
 ![Select Access Keys](/images/Select-AccessKeys.jpg)
 
-13. Click on **Show keys** and copy the first key. (Image-showKey) (Image-CopyKey)
+13. Click on **Show keys** and copy the first key. 
 
 
 ![Show Keys](/images/showKey.jpg)
@@ -330,22 +331,22 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Copy Key](/images/CopyKey.jpg)
 
-14. Paste the copied key in the Power BI popup seeking it and select **Connect** (Image-AccountKey)
+14. Paste the copied key in the Power BI popup seeking it and select **Connect**.
 
 
 ![Account Keys Paste](/images/AccountKey.jpg)
 
-15. A new popup with name **Refresh** will show up. Click on the **Continue** button that will appear (Image-Continue)
+15. A new popup with name **Refresh** will show up. Click on the **Continue** button that will appear.
 
 
 ![Refresh popup continue](/images/continue.jpg)
 
-16. Wait for a few seconds, and your report will load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. (Image-CognitiveSearch)
+16. Wait for a few seconds for the report to load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. 
 
 
 ![CognitiveSearch-KnowledgeStore-Analytics Tab](/images/CognitiveSearch-PBI-Tab.jpg)
 
-17. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. (Image-KeyphraseViewer)
+17. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. 
 
 
 ![Keyphrase-Graph-Viewer Tab](/images/keyphrase-viewer.jpg)
