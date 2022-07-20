@@ -1,4 +1,4 @@
-## Version: 2
+## Version: 3
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -45,12 +45,22 @@ These are the key pre-requisites to deploy this solution:
 
 ![Portal Maybe Later](/images/maybe-later-azure-homepage.jpg)
 
-4. Now, go to the **Resource groups** option under **Navigate**, and open the **Intelligent** resource group that we will use for the rest of this demo. You will notice there are already few resources present. 
+4. Now, select the **Resource groups** icon under **Navigate**. 
+
+
+![Open RGs](/images/idp-azure-home-page.jpg)
+
+5. Open the **Intelligent** resource group that we will use for the rest of this demo.
+
+
+![Select Intelligent RG](/images/select-RG.jpg)
+
+6. You will notice there are already few resources present. 
 
 
 ![Few resources present in RG](/images/few-resources.jpg)
 
-5. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
+7. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
 
 
 ### STEP 1 - Authorize Event Grid API Connection
