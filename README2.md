@@ -226,7 +226,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Select storage account](/images/select-storageAcc.jpg)
 
-11. Select the container **processforms** and click on **Select**.  
+11. Select the container **processforms** ***(1)*** and click on **Select** ***(2)***.  
 
 
 ![Select Container](/images/select-container.jpg)
