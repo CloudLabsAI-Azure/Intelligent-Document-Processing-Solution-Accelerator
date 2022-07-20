@@ -63,6 +63,8 @@ These are the key pre-requisites to deploy this solution:
 7. Go back to the PowerShell window and wait for a few minutes as we manually need to authorize two API connections.
 
 
+
+
 ### STEP 1 - Authorize Event Grid API Connection
 
 
