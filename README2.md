@@ -201,7 +201,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Add enrichments](/images/Add-enrichments.jpg)
 
-7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. 
+7. Scroll down and select the **Text Cognitive Skills** as per the image below.
 
 
 ![Verify Skills](/images/checkbox-and-nextSave.jpg)
