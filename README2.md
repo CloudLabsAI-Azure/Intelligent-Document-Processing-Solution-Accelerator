@@ -221,20 +221,57 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Search and select storage account](/images/search-select-storage-InRG.jpg)
 
-7. Scroll down in the storage account left blade and select `Shared Access Signature` under **Security + networking** (Image-SAS-blade)
+8. Scroll down in the storage account left blade and select `Shared Access Signature` under **Security + networking** (Image-SAS-blade)
 
 
 ![Storage account SAS blade](/images/SAS-blade.jpg)
 
-8. Check all the check boxes as shown in the below image (Image-Check-AllBoxes)
-9. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**(Image-DateTime-Protocol-GenerateSAS)
-10. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on `load`. (Image-Copy-SASToken)
-11. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for `Access Keys` and select it. (Image-Select-AccessKeys)
-12. Click on `Show keys` and copy the first key. (Image-showKey)
-13. Paste the copied key in the Power BI popup seeking it and select `OK` (Image-AccountKey)
-14. A new popup with name **Refresh** will show up. Click on the `Continue` button that will appear (Image-Cintinue)
-15. Wait for a few seconds, and your report will load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. (Image-CognitiveSearch)
-16. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. (Image-KeyphraseViewer)
+9. Check all the check boxes as shown in the below image (Image-Check-AllBoxes)
 
+
+![Check all boxes](/images/Check-AllBoxes.jpg)
+
+10. Select your timezone and set the expiry date to next day. Choose the Allowed protocols as **HTTP & HTTPS** and click on **Generate SAS and connection string**(Image-DateTime-Protocol-GenerateSAS)
+
+
+![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS.jpg)
+
+11. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on `load`. (Image-Copy-SASToken)
+
+
+![Copy SAS Token](/images/Copy-SASToken.jpg)
+
+12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for `Access Keys` and select it. (Image-Select-AccessKeys)
+
+
+![Select Access Keys](/images/Select-AccessKeys.jpg)
+
+13. Click on `Show keys` and copy the first key. (Image-showKey) (Image-CopyKey)
+
+
+![Show Keys](/images/showKey.jpg)
+
+
+![Copy Key](/images/CopyKey.jpg)
+
+14. Paste the copied key in the Power BI popup seeking it and select `OK` (Image-AccountKey)
+
+
+![Account Keys Paste](/images/AccountKey.jpg)
+
+15. A new popup with name **Refresh** will show up. Click on the `Continue` button that will appear (Image-Continue)
+
+
+![Refresh popup continue](/images/continue.jpg)
+
+16. Wait for a few seconds, and your report will load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. (Image-CognitiveSearch)
+
+
+![CognitiveSearch-KnowledgeStore-Analytics Tab](/images/CognitiveSearch-PBI-Tab.jpg)
+
+17. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. (Image-KeyphraseViewer)
+
+
+![Keyphrase-Graph-Viewer Tab](/images/keyphrase-viewer.jpg)
 
 <inject key="DeploymentID"></inject>
