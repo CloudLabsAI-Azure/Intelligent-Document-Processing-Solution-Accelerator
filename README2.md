@@ -198,7 +198,7 @@ Then please come to the taskbar and close the blank window. (Image-Close-Error-W
 11. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for `Access Keys` and select it. (Image-Select-AccessKeys)
 12. Click on `Show keys` and copy the first key. (Image-showKey)
 13. Paste the copied key in the Power BI popup seeking it and select `OK` (Image-AccountKey)
-14.   
+14. A new popup with name **Refresh** will show up. Wait for a few seconds and click on `Continue` (Image-Cintinue)
 15. 
 16. 
 17. 
