@@ -293,12 +293,12 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Provide Parameters](/images/enter-param.jpg)
 
-7. To get the **StorageAccountSasUri**, please revert back to `Intelligent` resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
+7. To get the **StorageAccountSasUri**, please revert back to **Intelligent** resource group in Azure. Then search and select `idp<DID>sa` storage account (Image-search-select-storage-InRG)
 
 
 ![Search and select storage account](/images/search-select-storage-InRG.jpg)
 
-8. Scroll down in the storage account left blade and select `Shared Access Signature` under **Security + networking** (Image-SAS-blade)
+8. Scroll down in the storage account left blade and select **Shared Access Signature** under **Security + networking** (Image-SAS-blade)
 
 
 ![Storage account SAS blade](/images/SAS-blade.jpg)
@@ -313,17 +313,17 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS.jpg)
 
-11. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on `load`. (Image-Copy-SASToken)
+11. Copy the SAS token and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. (Image-Copy-SASToken)
 
 
 ![Copy SAS Token](/images/Copy-SASToken.jpg)
 
-12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for `Access Keys` and select it. (Image-Select-AccessKeys)
+12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for **Access Keys** and select it. (Image-Select-AccessKeys)
 
 
 ![Select Access Keys](/images/Select-AccessKeys.jpg)
 
-13. Click on `Show keys` and copy the first key. (Image-showKey) (Image-CopyKey)
+13. Click on **Show keys** and copy the first key. (Image-showKey) (Image-CopyKey)
 
 
 ![Show Keys](/images/showKey.jpg)
@@ -331,12 +331,12 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Copy Key](/images/CopyKey.jpg)
 
-14. Paste the copied key in the Power BI popup seeking it and select `OK` (Image-AccountKey)
+14. Paste the copied key in the Power BI popup seeking it and select **Connect** (Image-AccountKey)
 
 
 ![Account Keys Paste](/images/AccountKey.jpg)
 
-15. A new popup with name **Refresh** will show up. Click on the `Continue` button that will appear (Image-Continue)
+15. A new popup with name **Refresh** will show up. Click on the **Continue** button that will appear (Image-Continue)
 
 
 ![Refresh popup continue](/images/continue.jpg)
