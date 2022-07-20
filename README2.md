@@ -105,20 +105,43 @@ These are the key pre-requisites to deploy this solution:
 ### STEP 2 - Authorize Office 365 API Connection
 
 1. We need follow the same procedure to authorize **idp<inject key="DeploymentID" enableCopy="false" />o365api** as we did in the previous step. We have to authorize the API connection in two minutes. Once you see the message `Authorize idpo365api API Connection` in yellow, go to `Intelligent` resource group. 
+
+
 ![Authorize office365 api Yellow](/images/authorize-officeapi-yellow.jpg)
+
 2. Search for the `idp``o365api` resource in the search tab and click on it. This will now take you to a API connection page. 
+
+
 ![select office365 api in RG](/images/officeapi-in-rg-intelligent.jpg)
+
 3. In the API connection blade, select `Edit API connection`. 
+
+
 ![edit office365 api](/images/officeapi-edit-connection.jpg)
+
 4. Click on `Authorize` button to authorize. 
+
+
 ![Authorize office365 api](/images/officeapi-authorize-button.jpg)
+
 5. In the new window that pops up, select the ODL/lab account. 
+
+
 ![Select Account](/images/officeapi-authorize-window.jpg)
+
 6. `Save` the connection and check for the notification stating **Successfully edited API connection**. 
+
+
 ![Save office365 api connection](/images/officeapi-save.jpg)
+
 7. Now go back to the `Overview` page and verify if the status shows **Connected**, else click on `Refresh` a few times as there could be some delays in the backend. 
+
+
 ![Verify office365 api connection](/images/officeapi-verify-connected.jpg)
+
 8. When the status shows **Connected**, come back to the PowerShell window and click on any key to continue when you see the message `Press any key to continue`. (Image)
+
+
 ![Continue after office365 api connection](/images/officeapi-continue.jpg)
 
 
@@ -129,55 +152,109 @@ We have now authorized both the API connections, wait for the script execution t
 ### STEP 1 - Creating Knowledge Store
 
 1. In the `Intelligent` resource group, search and select `idp666666azs` cognitive search service reosurce. (Image-SearchSelect)
+
+
 ![Select Cognitive search service](/images/Search-select-rg.jpg)
+
 2. In the **Seacrh service** page, click on the `Import data` option which will lead you to a new page. (Image-Import data)
+
+
 ![Import data](/images/Import-data.jpg)
+
 3. Choose `Existing data source` from the drop down menu, then select the existing Data Source `processformsds` and clcik on `Next: Add cognitive skills (optional)` (Image-ConnectDS)
+
+
 ![Select Data source](/images/Connect-DataSource.jpg)
+
 4. Click on the drop down button in the **Add cognitive skills** tab (Image-dropdown)
+
+
 ![Select Drop Down](/images/drop-down.jpg)
+
 5. Select the `idpcs` search service and click on the `Add enrichments` drop down (Image-AttachCS)
+
+
 ![Attach Cognitive search](/images/select-attach-cognitiveservice.jpg)
+
 6. Make sure to fill the below details as per the image 
    * Skillset name: `form<DID>skillset`
    * Enable OCR and merge all text into **merged_content** field: `Check the box`
    * Source data field: `merged_content`
    * Enrichment granularity: `Pages (5000 characters chunks)`
    (Image-AddEnrichements)
+
+
 ![Add enrichments](/images/Add-enrichments.jpg)
+
 7. Scroll down and verify if skills are checked as per the image below, else select the skills according to the image. (Image-CheckboxNextSave)
+
+
 ![Verify Skills](/images/checkbox-and-nextSave.jpg)
+
 8. In **Save enrichments** drop down, only select the below **Azure table projections**
    * Documents
    * Pages
    * Key phrases
    * Entities
    (Image-TableProjection)
+
+
 ![Table projections](/images/select-table-projection.jpg)
+
 9. Now, we need the connection string of the storage account. Click on the `Choose an existing connection`, this will redirect to a new page to select the storage account. (Image-ConnectionString)
+
+
 ![Storage Account Connection String](/images/choose-connectionString.jpg)
+
 10. Choose the `idp<DID>sa` storage account (Image-SelectStorage)
+
+
 ![Select storage account](/images/select-storageAcc.jpg)
+
 11. Select the container `processforms` and click on `Select` (Image-SelectContainer)
+
+
 ![Select Container](/images/select-container.jpg)
+
 12. Copy the Power BI parameters to a text file and save it, then select `Next: Customize target index` (Image-NextTaragetIndex) 
+
+
 ![Copy the Power BI parameters](/images/next-targetIndex.jpg)
+
 13. In this tab, enter the **Index name** as `forms<inject key="DeploymentID"></inject>index` and select `Next: Create an indexer` (Image-CustomizeIndex)
+
+
 ![Index details](/images/customize-index.jpg)
+
 14. Provide the following details for the indexer, 
     * Name: `forms<DID>indexer` 
     * Schedule: `Custom` 
     * Interval (minutes): `5`
 15. Select `Submit` to complete the process of creating **Knowledge Store** (Image-IndexerSubmit)
+
+
 ![Indexer details](/images/indexer-and-submit.jpg)
+
 16. Once submitted, click on the **Bell** icon in the top right section of the Azure portal to see the notifications. (Image-NotificationOpen)
+
+
 ![Open Notification](/images/notification-open.jpg)
+
 17. Select the text `Import successfully configured, click here to monitor the indexer progress` in the **Azure Cognitive Search** notiifcation. This will redirect you to **Indexer** page (Image-ImportNotification)
+
+
 ![Open Cognitive search Notification](/images/Import-Notification.jpg)
+
 18. In this page, a run would have been **In progress** as in the below image. If you cannot see any run **In progress/Success**, click on refresh until you are able to see it. (Image-IndexerProgress)
+
+
 ![Indexer Page Run In Progress](/images/Indexer-In-Progress.jpg)
+
 19. After a few seconds the run status should show as **Success**, else feel free to click the **refresh button** until you see it (Image-IndexerSuccess)
+
+
 ![Indexer Page Run Success](/images/Indexer-Success.jpg)
+
 
 We have now configured the Cognitive Search Knowledge Store.
 
@@ -273,5 +350,8 @@ We have now configured the Cognitive Search Knowledge Store.
 
 
 ![Keyphrase-Graph-Viewer Tab](/images/keyphrase-viewer.jpg)
+
+
+We have now expored Power BI Cognitive search content analytics report.
 
 <inject key="DeploymentID"></inject>
