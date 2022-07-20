@@ -1,4 +1,4 @@
-## Version: 6
+## Version: 7
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -201,7 +201,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Add enrichments](/images/Add-enrichments.jpg)
 
-7. Scroll down and select the **Text Cognitive Skills** as per the image below.
+7. Scroll down and select the **Text Cognitive Skills** as per the image below. Then, select the **Save enrichments to a knowledge store** drop down.
 
 
 ![Verify Skills](/images/checkbox-and-nextSave.jpg)
