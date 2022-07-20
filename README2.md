@@ -1,4 +1,4 @@
-## Version: 5
+## Version: 6
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -162,6 +162,8 @@ These are the key pre-requisites to deploy this solution:
 We have now authorized both the API connections. Go back to the PowerShell window and wait for the script execution to complete. Note that the PowerShell window will close once the script execution completes.
 
 ## Creating Knowledge Store and working with Power BI report
+
+
 
 ### STEP 1 - Creating Knowledge Store
 
