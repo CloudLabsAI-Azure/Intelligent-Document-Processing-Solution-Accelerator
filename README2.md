@@ -1,4 +1,4 @@
-## Version: 10
+## Version: 11
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
 # Intelligent Document Processing Solution Accelerator
@@ -236,10 +236,10 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 ![Copy the Power BI parameters](/images/next-targetIndex.jpg)
 
-13. In this tab, enter the **Index name** as **forms<inject key="DeploymentID" enableCopy="false" />-index** and select **Next: Create an indexer**. 
+13. In this tab, enter the **Index name** as **forms<inject key="DeploymentID" enableCopy="false" />-index** ***(1)*** and select **Next: Create an indexer** ***(2)***. 
 
 
-![Index details](/images/customize-index.jpg)
+![Index details](/images/customize-index2.jpg)
 
 14. Provide the following details for the indexer, 
     * Name: **forms<inject key="DeploymentID" enableCopy="false" />-indexer** ***(1)***
