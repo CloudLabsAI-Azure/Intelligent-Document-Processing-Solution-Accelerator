@@ -303,42 +303,52 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Close Formatting popup](/images/Formatting-popup.jpg)
 
-6. A popup with name **cognitive-search-content-analytics-template** will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. 
+6. If you get a Power BI popup seeking for subscribing, please select **Maybe later** and then click on **close**.
+
+
+![Maybe Later in subscribe](/images/PBI-maybe-later.jpg)
+
+
+
+![Maybe Later in subscribe](/images/close-thanks.jpg)
+
+
+7. A popup with name **cognitive-search-content-analytics-template** will showup. Fill in the Power BI parameters that you previously copied according to the respective fields. 
 
 
 ![Provide Parameters](/images/enter-param.jpg)
 
-7. To get the **StorageAccountSasUri**, please revert back to **Intelligent** resource group in Azure. Then search and select **idp<inject key="DeploymentID" enableCopy="false" />sa** storage account. 
+8. To get the **StorageAccountSasUri**, please revert back to **Intelligent** resource group in Azure. Then search and select **idp<inject key="DeploymentID" enableCopy="false" />sa** storage account. 
 
 
 ![Search and select storage account](/images/search-select-storage-InRG.jpg)
 
-8. Scroll down in the storage account left blade and select **Shared Access Signature** under **Security + networking**.
+9. Scroll down in the storage account left blade and select **Shared Access Signature** under **Security + networking**.
 
 
 ![Storage account SAS blade](/images/SAS-blade.jpg)
 
-9. Check all the check boxes as shown in the below image.
+10. Check all the check boxes as shown in the below image.
 
 
 ![Check all boxes](/images/Check-AllBoxes.jpg)
 
-10. Set the expiry date to next day and select your **Timezone** ***(1)***. Choose the Allowed protocols as **HTTP & HTTPS** ***(2)*** and click on **Generate SAS and connection string** ***(3)***.
+11. Set the expiry date to next day and select your **Timezone** ***(1)***. Choose the Allowed protocols as **HTTP & HTTPS** ***(2)*** and click on **Generate SAS and connection string** ***(3)***.
 
 
 ![Set DateTime and Protocol](/images/DateTime-Protocol-GenerateSAS2.jpg)
 
-11. Copy the **SAS token** and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. 
+12. Copy the **SAS token** and paste it in the Power BI popup window under **StorageAccountSasUri** and click on **Load**. 
 
 
 ![Copy SAS Token](/images/Copy-SASToken.jpg)
 
-12. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for **Access Keys** and select it. 
+13. Another popup window might appear seeking storage account key. Go back to the storage account and in the left blade, search for **Access Keys** and select it. 
 
 
 ![Select Access Keys](/images/Select-AccessKeys.jpg)
 
-13. Click on **Show keys** and copy the first key. 
+14. Click on **Show keys** and copy the first key. 
 
 
 ![Show Keys](/images/showKey.jpg)
@@ -346,22 +356,22 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Copy Key](/images/CopyKey.jpg)
 
-14. Paste the copied key in the Power BI popup seeking it and select **Connect**.
+15. Paste the copied key in the Power BI popup seeking it and select **Connect**.
 
 
 ![Account Keys Paste](/images/AccountKey.jpg)
 
-15. A new popup with name **Refresh** will show up. Click on the **Continue** button that will appear.
+16. A new popup with name **Refresh** will show up. Click on the **Continue** button that will appear.
 
 
 ![Refresh popup continue](/images/continue.jpg)
 
-16. Wait for a few seconds for the report to load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. 
+17. Wait for a few seconds for the report to load. Select the below **CognitiveSearch-KnowledgeStore-Analytics** tab and go through the above contents. 
 
 
 ![CognitiveSearch-KnowledgeStore-Analytics Tab](/images/CognitiveSearch-PBI-Tab.jpg)
 
-17. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. 
+18. Select the below **Keyphrase-Graph-Viewer** tab and go through the above contents. 
 
 
 ![Keyphrase-Graph-Viewer Tab](/images/keyphrase-viewer.jpg)
