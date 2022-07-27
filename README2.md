@@ -303,7 +303,7 @@ We have now configured the Cognitive Search Knowledge Store.
 
 ![Close Formatting popup](/images/Formatting-popup.jpg)
 
-6. If you get a Power BI popup seeking for subscribing, please select **Maybe later** and then click onCc **Close**.
+6. If you get a Power BI popup seeking for subscribing, please select **Maybe later** and then click on **Close**.
 
 
 ![Maybe Later in subscribe](/images/PBI-maybe-later.jpg)
