@@ -162,7 +162,7 @@ We have now authorized both the API connections. Go back to the PowerShell windo
 
 
 
-## Acessing the Search UI
+## Accessing the Search UI
 
 1. Go back to the **Intelligent** resource group. Then, search and select **idp<inject key="DeploymentID" enableCopy="false" />webapp**. 
 
